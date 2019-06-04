@@ -10,7 +10,7 @@ public interface Dao {
     Product getProduct();
     Product addProduct();
     Product rmProduct();
-    Category getCategory();
+    List<Category> getCategory();
     Category addCategory();
     Category rmCategory();
     Order getOrder();
