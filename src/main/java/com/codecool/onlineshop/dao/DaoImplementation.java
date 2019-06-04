@@ -8,6 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DaoImplementation implements Dao {
+    ConnectToSql connect;
+    Connection con;
+    Statement statement;
+
+    public DaoImplementation() {
+        connect = new ConnectToSql();
+    }
 
 
     @Override
@@ -42,10 +49,27 @@ public class DaoImplementation implements Dao {
 
     @Override
     public List<Category> getCategory() {
-        return null;
+        List<Category> categoryList = new ArrayList<>();
+        String sql = "SELECT * FROM category ";
+        ResultSet resultSet = getInputQuery(sql);
+        try {
+            while (resultSet.next()) {
+              Category category = new Category(resultSet.getInt("id_category"),
+                      resultSet.getString("name"), resultSet.getInt("is_available"));
+
+              categoryList.add(category);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeQuery();
+        }
+        return categoryList;
     }
 
-    @Override
+        @Override
     public Category addCategory() {
         return null;
     }
@@ -70,16 +94,28 @@ public class DaoImplementation implements Dao {
         return null;
     }
 
-    private ResultSet InputQuery(String sql) {
+    public ResultSet getInputQuery(String sql) {
         ResultSet resultSet = null;
         try {
-            ConnectToSql connect = new ConnectToSql();
-            Connection con = connect.connect();
-            Statement statement = con.createStatement();
+            con = connect.connect();
+            statement = con.createStatement();
             resultSet = statement.executeQuery(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return resultSet;
     }
+
+    public void closeQuery(){
+        try {
+            this.statement.close();
+            this.con.close();
+            this.connect.disconnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

@@ -6,22 +6,40 @@ import java.util.List;
 public class Category {
     private int id;
     private String name;
-    private boolean isAvailable;
-    private List<Product> products = new ArrayList<>();
+    private int isAvailable;
 
-    public Category(String name) {
+    public Category(int id, String name, int isAvailable) {
+        this.id = id;
+        this.name = name;
+        this.isAvailable = isAvailable;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void GetProducts(List<Product> products)
-    {
-
+    public int getIsAvailable() {
+        return isAvailable;
     }
 
-    public String ToString()
-    {
-        String txt = "";
+    public void setIsAvailable(int isAvailable) {
+        this.isAvailable = isAvailable;
+    }
 
-        return txt;
+    @Override
+    public String toString() {
+        return this.id + " " + this.name + " " + this.isAvailable;
     }
 }
