@@ -30,6 +30,7 @@ hs_err_pid*
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
+OnlineShop.iml
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
