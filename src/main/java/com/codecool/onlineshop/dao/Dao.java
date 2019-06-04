@@ -1,10 +1,11 @@
 package com.codecool.onlineshop.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface Dao {
 
-    User getUser();
+    List<User> getUser() throws SQLException;
     User addUser();
     User rmUser();
     Product getProduct();

@@ -18,9 +18,26 @@ public class DaoImplementation implements Dao {
 
 
     @Override
-    public User getUser() {
-        return null;
+    public List<User> getUser() throws SQLException {
+        List<User> users = new ArrayList<>();
+        ResultSet resultSet = getInputQuery("SELECT * FROM users");
+        try{
+            while(resultSet.next()){
+
+                int userId = resultSet.getInt("id");
+                String password = resultSet.getString("password");
+                String userName = resultSet.getString("name");
+                int permission = resultSet.getInt("permission");
+                User user = new User(userId, userName, password, permission);
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
+
+
 
     @Override
     public User addUser() {

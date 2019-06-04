@@ -4,9 +4,9 @@ public class User {
     private int userId;
     private String userName;
     private String password;
-    private String permission;
+    private int permission;
 
-    public User(int userId, String userName, String password, String perrmission){
+    public User(int userId, String userName, String password, int perrmission){
         this.userId = userId;
         this.userName = userName;
         this.password = password;
@@ -25,7 +25,7 @@ public class User {
         return password;
     }
 
-    public String getPerrmission() {
+    public int getPerrmission() {
         return permission;
     }
 
