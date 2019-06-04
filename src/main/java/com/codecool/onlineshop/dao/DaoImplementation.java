@@ -1,5 +1,12 @@
 package com.codecool.onlineshop.dao;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 public class DaoImplementation implements Dao {
 
 
@@ -34,7 +41,7 @@ public class DaoImplementation implements Dao {
     }
 
     @Override
-    public Category getCategory() {
+    public List<Category> getCategory() {
         return null;
     }
 
@@ -61,5 +68,18 @@ public class DaoImplementation implements Dao {
     @Override
     public Order rmOrder() {
         return null;
+    }
+
+    private ResultSet InputQuery(String sql) {
+        ResultSet resultSet = null;
+        try {
+            ConnectToSql connect = new ConnectToSql();
+            Connection con = connect.connect();
+            Statement statement = con.createStatement();
+            resultSet = statement.executeQuery(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
     }
 }
