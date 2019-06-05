@@ -1,5 +1,9 @@
 package com.codecool.onlineshop.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class User {
     private int userId;
     private String userName;
@@ -29,9 +33,27 @@ public class User {
         return permission;
     }
 
-    public void login()
+    public String userInput()
     {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
 
+    List login()
+    {
+        String userLogin;
+        String userPassword;
+        List<String> userData = new ArrayList<>();
+
+        System.out.print("Login: ");
+        userLogin = userInput();
+        userData.add(userLogin);
+
+        System.out.print("Password: ");
+        userPassword = userInput();
+        userData.add(userPassword);
+
+        return userData;
     }
 }
 
