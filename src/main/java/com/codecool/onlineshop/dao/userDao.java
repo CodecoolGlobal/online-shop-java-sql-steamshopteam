@@ -45,10 +45,27 @@ public class userDao implements Dao<User> {
     @Override
     public void update() {
 
+        //toDo: Implement
+
+        try {
+            throw new UnsupportedOperationException("not implementet yet");
+        } catch (UnsupportedOperationException e) {
+            System.out.println(e.getMessage());
+        }
+
+
     }
 
     @Override
     public void delete() {
+
+        //toDo: Implement
+
+        try {
+            throw new UnsupportedOperationException("not implementet yet");
+        } catch (UnsupportedOperationException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }
