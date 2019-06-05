@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategorySql implements Dao {
+public class CategorySql implements Dao<Category> {
 
     private SqlImplementation sqlImplementation;
 
@@ -17,8 +17,9 @@ public class CategorySql implements Dao {
     }
 
     @Override
-    public void create(String... args) {
-        sqlImplementation.doQuery(" INSERT INTO category(name, is_available) VALUES('"+args[0]+"', '"+Integer.parseInt(args[1])+"')");
+    public void create(Category obj) {
+        sqlImplementation.doQuery(" INSERT INTO category(name, is_available) VALUES('" + obj.getName() +
+                "', '" + obj.getIsAvailable() + "')");
         sqlImplementation.closeQuery();
 
     }

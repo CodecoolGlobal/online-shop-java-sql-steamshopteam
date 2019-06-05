@@ -5,6 +5,11 @@ public class Category {
     private String name;
     private int isAvailable;
 
+    public Category( String name, int isAvailable) {
+        this.name = name;
+        this.isAvailable = isAvailable;
+    }
+
     public Category(int id, String name, int isAvailable) {
         this.id = id;
         this.name = name;

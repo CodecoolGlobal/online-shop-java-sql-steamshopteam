@@ -6,8 +6,9 @@ import java.util.List;
 
 public class OrderDao implements Dao {
 
+
     @Override
-    public void create(String... args) {
+    public void create(Object obj) {
 
     }
 

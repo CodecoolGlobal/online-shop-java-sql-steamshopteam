@@ -2,9 +2,9 @@ package com.codecool.onlineshop.dao.interfaces;
 
 import java.util.List;
 
-public interface Dao {
+public interface Dao <T> {
 
-    void create(String... args);
+    void create(T obj);
     List read();
     void update();
     void delete();
