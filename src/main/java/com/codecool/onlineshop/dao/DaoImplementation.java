@@ -27,7 +27,7 @@ public class DaoImplementation implements Dao {
                 int userId = resultSet.getInt("id");
                 String password = resultSet.getString("password");
                 String userName = resultSet.getString("name");
-                int permission = resultSet.getInt("permission");
+                int permission = resultSet.getInt("id_permission");
                 User user = new User(userId, userName, password, permission);
                 users.add(user);
             }
@@ -41,7 +41,9 @@ public class DaoImplementation implements Dao {
 
     @Override
     public User addUser() {
-        //doQuery("INSERT INTO users(");
+        //todo register new user
+        User newUser = new User(3,"dupa", "yo", 1);
+        doQuery("INSERT INTO Users(password, name, id_permission) VALUES ('"+newUser.getPassword()+"','"+newUser.getUserName()+"', '"+newUser.getPerrmission()+"')");
         return null;
     }
 
