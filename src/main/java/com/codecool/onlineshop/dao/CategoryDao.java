@@ -53,7 +53,7 @@ public class CategoryDao implements Dao<Category> {
     }
 
     @Override
-    public void delete() {
+    public void delete(int id) {
         //toDo:
         //doQuery("DELETE FROM category WHERE name = " + cateogryName + ";");
 

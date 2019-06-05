@@ -24,7 +24,7 @@ public class OrderDao implements Dao<Order> {
     }
 
     @Override
-    public void delete() {
+    public void delete(int id) {
 
     }
 }

@@ -2,16 +2,15 @@ package com.codecool.onlineshop.dao;
 
 
 import com.codecool.onlineshop.model.Category;
+import com.codecool.onlineshop.model.Product;
 
 public class MainTest {
     public static void main(String[] atgs) {
 
-        CategoryDao categoryDao = new CategoryDao();
-        System.out.println(categoryDao.read());
-        Category category =new Category("testo",666);
-        categoryDao.create(category);
-        System.out.println(categoryDao.read());
-
+        ProductDao productDao = new ProductDao();
+        Product product = new Product(1,"dupa",199,9,1,1);
+        productDao.create(product);
+        System.out.println(productDao.read());
 
 
     }
