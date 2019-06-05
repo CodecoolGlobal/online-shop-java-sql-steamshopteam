@@ -12,6 +12,7 @@ public class CategoryDao implements Dao<Category> {
 
     private SqlImplementation sqlImplementation;
 
+
     public CategoryDao() {
         sqlImplementation = new SqlImplementation();
     }
