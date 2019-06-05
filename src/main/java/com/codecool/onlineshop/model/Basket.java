@@ -1,4 +1,4 @@
-package com.codecool.onlineshop.dao;
+package com.codecool.onlineshop.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;

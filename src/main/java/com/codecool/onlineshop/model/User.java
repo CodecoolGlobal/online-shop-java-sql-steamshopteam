@@ -1,4 +1,4 @@
-package com.codecool.onlineshop.dao;
+package com.codecool.onlineshop.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +8,13 @@ public class User {
     private int userId;
     private String userName;
     private String password;
-    private String permission;
+    private int permission;
 
-    public User(int userId, String userName, String password, String perrmission){
+    public User(int userId, String userName, String password, int permission){
         this.userId = userId;
         this.userName = userName;
         this.password = password;
-        this.permission = perrmission;
+        this.permission = permission;
     }
 
     public int getUserId() {
@@ -29,7 +29,7 @@ public class User {
         return password;
     }
 
-    public String getPerrmission() {
+    public int getPermission() {
         return permission;
     }
 
@@ -39,7 +39,7 @@ public class User {
         return scanner.nextLine();
     }
 
-    List login()
+    public List login()
     {
         String userLogin;
         String userPassword;

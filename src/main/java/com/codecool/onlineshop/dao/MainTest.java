@@ -1,19 +1,20 @@
 package com.codecool.onlineshop.dao;
 
+import com.codecool.onlineshop.model.User;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MainTest {
-    private User user = new User(0, "", "", "");
+    private User user = new User(0, "", "", 0);
     private boolean isLogged;
 
-    public static void main(String[] atgs){
+    public static void main(String[] args){
         MainTest main = new MainTest();
 
         main.checkLogin();
