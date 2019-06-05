@@ -1,7 +1,4 @@
-package com.codecool.onlineshop.dao;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.codecool.onlineshop.model;
 
 public class Category {
     private int id;

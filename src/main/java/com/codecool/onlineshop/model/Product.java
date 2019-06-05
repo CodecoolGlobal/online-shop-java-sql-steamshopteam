@@ -1,4 +1,4 @@
-package com.codecool.onlineshop.dao;
+package com.codecool.onlineshop.model;
 
 public class Product {
     private int id;

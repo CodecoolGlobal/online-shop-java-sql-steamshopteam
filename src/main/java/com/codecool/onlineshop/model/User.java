@@ -1,4 +1,4 @@
-package com.codecool.onlineshop.dao;
+package com.codecool.onlineshop.model;
 
 public class User {
     private int userId;
