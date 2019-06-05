@@ -18,7 +18,7 @@ public class DaoImplementation implements Dao {
 
 
     @Override
-    public List<User> getUser() throws SQLException {
+    public List<User> getUser() {
         List<User> users = new ArrayList<>();
         ResultSet resultSet = getInputQuery("SELECT * FROM users");
         try{
@@ -41,6 +41,7 @@ public class DaoImplementation implements Dao {
 
     @Override
     public User addUser() {
+        //doQuery("INSERT INTO users(");
         return null;
     }
 
@@ -122,6 +123,18 @@ public class DaoImplementation implements Dao {
         }
 
         return resultSet;
+    }
+
+    public void doQuery(String sql) {
+        try {
+            con = connect.connect();
+            statement = con.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void closeQuery(){
