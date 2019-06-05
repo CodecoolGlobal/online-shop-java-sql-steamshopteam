@@ -50,12 +50,25 @@ public class CategoryDao implements Dao<Category> {
     @Override
     public void update() {
 
+        //toDo: Implement
+
+        try {
+            throw new UnsupportedOperationException("not implementet yet");
+        } catch (UnsupportedOperationException e) {
+            System.out.println(e.getMessage());
+        }
     }
+
 
     @Override
     public void delete() {
-        //toDo:
-        //doQuery("DELETE FROM category WHERE name = " + cateogryName + ";");
 
+        //toDo: Implement
+
+        try {
+            throw new UnsupportedOperationException("not implementet yet");
+        } catch (UnsupportedOperationException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
