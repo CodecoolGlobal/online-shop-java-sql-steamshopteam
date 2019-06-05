@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategorySql implements Dao<Category> {
+public class CategoryDao implements Dao<Category> {
 
     private SqlImplementation sqlImplementation;
 
-    public CategorySql() {
+    public CategoryDao() {
         sqlImplementation = new SqlImplementation();
     }
 

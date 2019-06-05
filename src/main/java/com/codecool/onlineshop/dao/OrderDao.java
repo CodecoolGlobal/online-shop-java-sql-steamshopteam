@@ -1,14 +1,15 @@
 package com.codecool.onlineshop.dao;
 
 import com.codecool.onlineshop.dao.interfaces.Dao;
+import com.codecool.onlineshop.model.Order;
 
 import java.util.List;
 
-public class OrderDao implements Dao {
+public class OrderDao implements Dao<Order> {
 
 
     @Override
-    public void create(Object obj) {
+    public void create(Order obj) {
 
     }
 
