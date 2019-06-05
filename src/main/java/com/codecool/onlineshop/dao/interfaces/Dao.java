@@ -7,5 +7,5 @@ public interface Dao {
     void create(String... args);
     List read();
     void update();
-    void delete();
+    void delete(int id);
 }

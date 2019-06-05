@@ -9,22 +9,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class userDao implements Dao {
-   private SqlImplementation daoImplementation;
+   private SqlImplementation sqlImplementation;
 
     public userDao() {
-        daoImplementation = new SqlImplementation();
+        sqlImplementation = new SqlImplementation();
     }
 
 
     @Override
     public void create(String... args) {
 
+        //todo register new user
+        try {
+            User newUser = new User(3,"dupa", "yo", 1);
+            sqlImplementation.doQuery("INSERT INTO Users(password, name, id_permission) VALUES ('"+newUser.getPassword()+"','"+newUser.getUserName()+"', '"+newUser.getPerrmission()+"')");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override
     public List read() {
         List<User> users = new ArrayList<>();
-        ResultSet resultSet = daoImplementation.selectQuery("SELECT * FROM users");
+        ResultSet resultSet = sqlImplementation.selectQuery("SELECT * FROM users");
         try {
             while (resultSet.next()) {
 
@@ -48,7 +57,12 @@ public class userDao implements Dao {
     }
 
     @Override
-    public void delete() {
+    public void delete(int userId) {
+        try {
+            sqlImplementation.doQuery("DELETE FROM users WHERE id = '"+userId+"'");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }
