@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class userDao implements Dao {
+public class userDao implements Dao<User> {
    private SqlImplementation daoImplementation;
 
     public userDao() {
@@ -17,7 +17,7 @@ public class userDao implements Dao {
 
 
     @Override
-    public void create(Object obj) {
+    public void create(User obj) {
 
     }
 
