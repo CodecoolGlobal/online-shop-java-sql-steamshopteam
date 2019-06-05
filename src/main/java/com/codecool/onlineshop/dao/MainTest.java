@@ -9,8 +9,9 @@ public class MainTest {
         CategoryDao categoryDao = new CategoryDao();
         System.out.println(categoryDao.read());
         Category category =new Category("testo",666);
-        categoryDao.create(category);
+        //categoryDao.create(category);
         System.out.println(categoryDao.read());
+        categoryDao.update();
 
 
 
