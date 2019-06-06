@@ -41,7 +41,8 @@ public class UserDao implements Dao<User> {
                 String password = resultSet.getString("password");
                 String userName = resultSet.getString("name");
                 int permission = resultSet.getInt("permission");
-                User user = new User(userId, userName, password, permission);
+                int isLogged = resultSet.getInt("is_logged");
+                User user = new User(userId, userName, password, permission, isLogged);
                 users.add(user);
             }
         } catch (SQLException e) {
@@ -52,12 +53,14 @@ public class UserDao implements Dao<User> {
 
 
     @Override
-    public void update(User obj) {
+    public void update(User user) {
 
         //toDo: Implement
 
         try {
-            throw new UnsupportedOperationException("not implementet yet");
+            sqlImplementation.doQuery("UPDATE users SET password = '"+user.getPassword()+"'," +
+                    "name = '"+user.getUserName()+"', id_permission = '"+user.getPermission()+"'," +
+                    "is_logged = '"+user.isLogged()+"'");
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
         }
