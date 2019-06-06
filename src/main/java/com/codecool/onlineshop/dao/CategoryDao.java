@@ -19,9 +19,8 @@ public class CategoryDao implements Dao<Category> {
 
     @Override
     public void create(Category obj) {
-        //bolean - 2
-        sqlImplementation.doQuery(" INSERT INTO category(name) VALUES('" + obj.getName() +
-                "')");
+        sqlImplementation.doQuery(" INSERT INTO category(name, is_available) VALUES('" + obj.getName() +
+                "', '");
         sqlImplementation.closeQuery();
 
     }
@@ -51,14 +50,18 @@ public class CategoryDao implements Dao<Category> {
 
     @Override
     public void update(Category obj) {
-        sqlImplementation.doQuery("UPDATE category SET name = '"+obj.getName() +"' WHERE id_category = '" + obj.getId() + "' ");
-        sqlImplementation.closeQuery();
+
+        //toDo: Implement
+
+        try {
+            throw new UnsupportedOperationException("not implementet yet");
+        } catch (UnsupportedOperationException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
     public void delete(int id) {
-        //toDo:
-        //doQuery("DELETE FROM category WHERE name = " + cateogryName + ";");
 
         //toDo: Implement
 

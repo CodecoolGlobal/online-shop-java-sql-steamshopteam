@@ -12,7 +12,7 @@ public class Admin extends User {
 
     private void addNewCategory()
     {
-        Category newCategory = new Category( "0");
+        Category newCategory = new Category(0, "");
 
         newCategory.setId(10);
         newCategory.setName("Mices");

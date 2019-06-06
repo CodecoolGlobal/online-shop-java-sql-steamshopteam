@@ -10,6 +10,8 @@ public class User {
     private String password;
     private int permission;
 
+    UserInput input = new UserInput();
+
     public User(int userId, String userName, String password, int permission){
         this.userId = userId;
         this.userName = userName;
@@ -33,24 +35,22 @@ public class User {
         return permission;
     }
 
-    public String userInput()
-    {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
-    }
+
 
     public List login()
     {
+        String userInput = "";
+        userInput = input.input();
         String userLogin;
         String userPassword;
         List<String> userData = new ArrayList<>();
 
         System.out.print("Login: ");
-        userLogin = userInput();
+        userLogin = userInput;
         userData.add(userLogin);
 
         System.out.print("Password: ");
-        userPassword = userInput();
+        userPassword = userInput;
         userData.add(userPassword);
 
         return userData;
