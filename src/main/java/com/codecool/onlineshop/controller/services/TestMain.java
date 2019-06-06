@@ -5,7 +5,11 @@ public class TestMain {
 
         CategoryService categoryService = new CategoryService();
 
-        categoryService.update();
+        System.out.println(categoryService.readAllCategory());
+
+        categoryService.update(16,"testUpdate");
+        System.out.println(categoryService.readAllCategory());
+
 
     }
 }
