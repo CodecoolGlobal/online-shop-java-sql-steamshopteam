@@ -20,7 +20,7 @@ public class MainTest {
         CategoryDao categoryDao = new CategoryDao();
         OrderDao orderDao = new OrderDao();
         System.out.println(categoryDao.read());
-        Category category = new Category("test999");
+        Category category = new Category("test666666666");
         category.setId(16);
         categoryDao.update(category);
         System.out.println(categoryDao.read());

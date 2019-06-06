@@ -33,7 +33,7 @@ public class productDao implements Dao<Product> {
     }
 
     @Override
-    public void delete() {
+    public void delete(int id) {
 
         //toDo: Implement
 

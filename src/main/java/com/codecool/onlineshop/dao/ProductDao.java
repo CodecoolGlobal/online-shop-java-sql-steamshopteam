@@ -46,7 +46,7 @@ public class ProductDao implements Dao<Product> {
 
 
     @Override
-    public void update() {
+    public void update(Product obj) {
 
     }
 
