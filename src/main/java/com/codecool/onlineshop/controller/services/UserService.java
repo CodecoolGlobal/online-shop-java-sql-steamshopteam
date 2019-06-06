@@ -30,7 +30,7 @@ public class UserService {
         }
         return null;
     }
-    public void updateUser(int userName){
+    public void updateUser(String userName){
         List<User> userList = userDao.read();
         for(User user : userList){
             if(user.getUserName().equals(userName)){
