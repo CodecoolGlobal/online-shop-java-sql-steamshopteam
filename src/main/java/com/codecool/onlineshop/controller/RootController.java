@@ -1,10 +1,11 @@
 package com.codecool.onlineshop.controller;
 
-public class rootController {
+public class RootController {
 
     CategoryController categoryController = new CategoryController();
 
      public void run(){
-         categoryController.createNewCategory();
+         //categoryController.createNewCategory();
+         categoryController.editNameExistCategory();
      }
 }
