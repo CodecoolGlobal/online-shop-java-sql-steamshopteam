@@ -11,13 +11,12 @@ import java.util.List;
 import java.util.Map;
 import com.codecool.onlineshop.model.Category;
 import com.codecool.onlineshop.model.Order;
-import com.sun.org.apache.xpath.internal.operations.Or;
 
 public class MainTest {
     private User user = new User(0, "", "", 0);
     private boolean isLogged;
 
-        CategoryDao categoryDao = new CategoryDao();
+/*        CategoryDao categoryDao = new CategoryDao();
         OrderDao orderDao = new OrderDao();
         System.out.println(categoryDao.read());
         Category category =new Category("testo",666);
@@ -29,7 +28,7 @@ public class MainTest {
         System.out.println(orderDao.read());
 
         main.checkLogin();
-    }
+    }*/
 
     private Map<String, String> sendQuerry(String querry)
     {

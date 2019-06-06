@@ -5,12 +5,12 @@ public class Category {
     private String name;
     private int isAvailable;
 
-    public Category( String name, int isAvailable) {
+    public Category( String name) {
         this.name = name;
         this.isAvailable = isAvailable;
     }
 
-    public Category(int id, String name, int isAvailable) {
+    public Category(int id, String name) {
         this.id = id;
         this.name = name;
         this.isAvailable = isAvailable;
