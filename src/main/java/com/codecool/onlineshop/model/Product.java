@@ -16,6 +16,13 @@ public class Product {
         this.isAvailable = isAvailable;
         this.categoryId = categoryId;
     }
+    public Product(String name, float price, int amount, int isAvailable, int categoryId) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.isAvailable = isAvailable;
+        this.categoryId = categoryId;
+    }
 
     public int getId() {
         return id;
