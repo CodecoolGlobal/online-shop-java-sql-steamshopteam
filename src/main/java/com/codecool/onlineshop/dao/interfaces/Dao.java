@@ -6,6 +6,6 @@ public interface Dao <T> {
 
     void create(T obj);
     List read();
-    void update();
-    void delete();
+    void update(T obj);
+    void delete(int id);
 }

@@ -55,7 +55,7 @@ public class OrderDao implements Dao<Order> {
     }
 
     @Override
-    public void update() {
+    public void update(Order obj) {
 
         //toDo: Implement
 
@@ -68,7 +68,7 @@ public class OrderDao implements Dao<Order> {
     }
 
     @Override
-    public void delete() {
+    public void delete(int id) {
 
         //toDo: Implement
 
