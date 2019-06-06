@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderService {
-    OrderDao orderDao;
+    private OrderDao orderDao;
 
     public OrderService() {
          orderDao = new OrderDao();
