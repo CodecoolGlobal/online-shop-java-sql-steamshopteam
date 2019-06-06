@@ -43,7 +43,7 @@ public class userDao implements Dao<User> {
 
 
     @Override
-    public void update() {
+    public void update(User obj) {
 
         //toDo: Implement
 
