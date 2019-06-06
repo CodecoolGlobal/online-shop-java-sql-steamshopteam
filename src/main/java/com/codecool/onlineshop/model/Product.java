@@ -5,16 +5,40 @@ public class Product {
     private String name;
     private float price;
     private int amount;
-    private boolean isAvailable;
-    private Category category;
+    private int isAvailable;
+    private int categoryId;
 
-    public Product(int id, String name, float price, int amount, boolean isAvailable, Category category) {
+    public Product(int id, String name, float price, int amount, int isAvailable, int categoryId) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.amount = amount;
         this.isAvailable = isAvailable;
-        this.category = category;
+        this.categoryId = categoryId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public int getIsAvailable() {
+        return isAvailable;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
     }
 
     public String ToString()
