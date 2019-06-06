@@ -19,8 +19,7 @@ public class CategoryDao implements Dao<Category> {
 
     @Override
     public void create(Category obj) {
-        sqlImplementation.doQuery(" INSERT INTO category(name, is_available) VALUES('" + obj.getName() +
-                "', '" + obj.getIsAvailable() + "')");
+        sqlImplementation.doQuery(" INSERT INTO category(name, is_available) VALUES('" + obj.getName() + "', '");
         sqlImplementation.closeQuery();
 
     }
@@ -33,7 +32,7 @@ public class CategoryDao implements Dao<Category> {
         try {
             while (resultSet.next()) {
                 Category category = new Category(resultSet.getInt("id_category"),
-                        resultSet.getString("name"), resultSet.getInt("is_available"));
+                        resultSet.getString("name"));
 
                 categoryList.add(category);
             }

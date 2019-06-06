@@ -11,22 +11,28 @@ import java.util.List;
 import java.util.Map;
 import com.codecool.onlineshop.model.Category;
 import com.codecool.onlineshop.model.Order;
-import com.sun.org.apache.xpath.internal.operations.Or;
+import com.codecool.onlineshop.view.UI;
 
 public class MainTest {
     private User user = new User(0, "", "", 0);
     private boolean isLogged;
 
+    public static void main(String[] args)
+    {
+        MainTest main = new MainTest();
         CategoryDao categoryDao = new CategoryDao();
         OrderDao orderDao = new OrderDao();
         System.out.println(categoryDao.read());
-        Category category =new Category("testo",666);
+        Category category = new Category("testo");
         //categoryDao.create(category);
         System.out.println(categoryDao.read());
         categoryDao.update();
         Order order = new Order("12.12.2019","null",1,1,1);
         orderDao.create(order);
         System.out.println(orderDao.read());
+
+        UI ui = new UI();
+        ui.start();
 
         main.checkLogin();
     }

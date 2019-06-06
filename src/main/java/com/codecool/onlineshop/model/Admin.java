@@ -12,12 +12,7 @@ public class Admin extends User {
 
     private void addNewCategory()
     {
-        Category newCategory = new Category("", 0);
-
-        newCategory.setId(10);
-        newCategory.setName("Mices");
-
-        categoryDao.create(newCategory);
+        categoryDao.create(new Category(0, "Test"));
     }
 
     private void editCategoryName(int categoryId)

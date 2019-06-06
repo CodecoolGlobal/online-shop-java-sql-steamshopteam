@@ -6,7 +6,7 @@ public class FeaturedCategory extends Category {
     private Date expirationDate;
 
     public FeaturedCategory(int id, String name, int isAvailable, Date expirationDate) {
-        super(id, name, isAvailable);
+        super(id, name);
         this.expirationDate = expirationDate;
     }
 }
