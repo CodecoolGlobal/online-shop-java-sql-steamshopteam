@@ -14,6 +14,23 @@ public class User {
         this.permission = permission;
         this.isLogged = isLogged;
     }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPermission(int permission) {
+        this.permission = permission;
+    }
+
+    public void setIsLogged(int isLogged) {
+        this.isLogged = isLogged;
+    }
+
     public User(String userName, String password, int permission){
         this.userName = userName;
         this.password = password;
@@ -45,20 +62,5 @@ public class User {
         return permission;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setPermission(int permission) {
-        this.permission = permission;
-    }
-
-    public void setIsLogged(int isLogged) {
-        this.isLogged = isLogged;
-    }
 }
 

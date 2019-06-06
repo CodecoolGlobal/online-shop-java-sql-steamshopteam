@@ -1,11 +1,7 @@
 package com.codecool.onlineshop.view;
 
-import com.codecool.onlineshop.controller.services.UserService;
-import com.codecool.onlineshop.dao.SqlImplementation;
 import com.codecool.onlineshop.model.UserInput;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.codecool.onlineshop.model.UserLogin;
 
 public class UI {
 
@@ -13,21 +9,10 @@ public class UI {
     private int permission;
 
     private UserInput input = new UserInput();
-    private UserService userLogin = new UserService();
+    private UserLogin userLogin = new UserLogin();
 
     public void start()
     {
-        SqlImplementation sqlImplementation = new SqlImplementation();
-        String sqlQuerry = "SELECT id_permission, is_logged FROM users ";
-        ResultSet resultSet = sqlImplementation.selectQuery(sqlQuerry);
-
-        try {
-            isLogged = resultSet.getInt("is_logged") != 0;
-            permission = resultSet.getInt("id_permission");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
         showMenu();
     }
 
@@ -54,7 +39,7 @@ public class UI {
         switch (choice)
         {
             case 1:
-                userLogin.checkLogin();
+                userLogin.login();
                 showMenu();
             case 2:
                 System.exit(0);
