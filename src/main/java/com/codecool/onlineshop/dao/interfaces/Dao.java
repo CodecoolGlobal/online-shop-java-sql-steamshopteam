@@ -5,8 +5,7 @@ import java.util.List;
 public interface Dao <T> {
 
     void create(T obj);
-    //void create(T obj, T obj1);
     List read();
-    void update();
+    void update(T obj);
     void delete(int id);
 }
