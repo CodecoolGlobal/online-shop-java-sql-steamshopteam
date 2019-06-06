@@ -6,9 +6,6 @@ public class Admin extends User {
 
     CategoryDao categoryDao = new CategoryDao();
 
-    public Admin(int userId, String userName, String password, int permission) {
-        super(userId, userName, password, permission);
-    }
 
     private void addNewCategory()
     {

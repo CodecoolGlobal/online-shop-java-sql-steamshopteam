@@ -1,19 +1,20 @@
 package com.codecool.onlineshop.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class User {
     private int userId;
     private String userName;
     private String password;
     private int permission;
+    private int isLogged;
 
-    UserInput input = new UserInput();
-
-    public User(int userId, String userName, String password, int permission){
+    public User(int userId, String userName, String password, int permission, int isLogged){
         this.userId = userId;
+        this.userName = userName;
+        this.password = password;
+        this.permission = permission;
+        this.isLogged = isLogged;
+    }
+    public User(String userName, String password, int permission){
         this.userName = userName;
         this.password = password;
         this.permission = permission;
@@ -22,6 +23,10 @@ public class User {
     public User()
     {
 
+    }
+
+    public int isLogged() {
+        return isLogged;
     }
 
     public int getUserId() {
@@ -40,23 +45,20 @@ public class User {
         return permission;
     }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-    public List login()
-    {
-        String userLogin;
-        String userPassword;
-        List<String> userData = new ArrayList<>();
+    public void setPermission(int permission) {
+        this.permission = permission;
+    }
 
-        System.out.print("Login: ");
-        userLogin = input.input();
-        userData.add(userLogin);
-
-        System.out.print("Password: ");
-        userPassword = input.input();
-        userData.add(userPassword);
-
-        return userData;
+    public void setIsLogged(int isLogged) {
+        this.isLogged = isLogged;
     }
 }
 

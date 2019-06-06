@@ -1,9 +1,8 @@
 package com.codecool.onlineshop.view;
 
+import com.codecool.onlineshop.controller.services.UserService;
 import com.codecool.onlineshop.dao.SqlImplementation;
-import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.model.UserInput;
-import com.codecool.onlineshop.model.UserLogin;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +13,7 @@ public class UI {
     private int permission;
 
     private UserInput input = new UserInput();
-    private UserLogin userLogin = new UserLogin();
+    private UserService userLogin = new UserService();
 
     public void start()
     {
@@ -56,6 +55,7 @@ public class UI {
         {
             case 1:
                 userLogin.checkLogin();
+                showMenu();
             case 2:
                 System.exit(0);
         }

@@ -1,19 +1,71 @@
-package com.codecool.onlineshop.model;
+package com.codecool.onlineshop.controller.services;
 
 import com.codecool.onlineshop.dao.ConnectToSql;
+import com.codecool.onlineshop.dao.UserDao;
+import com.codecool.onlineshop.model.User;
+import com.codecool.onlineshop.model.UserInput;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserLogin {
+public class UserService {
+    private UserDao userDao;
 
-    private User user = new User(0, "", "", 0);
+    private UserInput input = new UserInput();
 
+    public UserService() {
+        userDao = new UserDao();
+    }
+
+
+    public void create(String userName, String password, int permission) {
+        userDao.create(new User(userName, password, permission));
+    }
+
+    public List readAllUsers() {
+        return userDao.read();
+    }
+
+    public User readOf(String userName){
+        List<User> userList = userDao.read();
+        for (User user : userList) {
+            if(user.getUserName().equals(userName)){
+                return user;
+            }
+        }
+        return null;
+    }
+    public void updateUser(String userName){
+        List<User> userList = userDao.read();
+        for(User user : userList){
+            if(user.getUserName().equals(userName)){
+                userDao.update(user);
+            }
+        }
+    }
+
+    public List login()
+    {
+        String userLogin;
+        String userPassword;
+        List<String> userData = new ArrayList<>();
+
+        System.out.print("Login: ");
+        userLogin = input.input();
+        userData.add(userLogin);
+
+        System.out.print("Password: ");
+        userPassword = input.input();
+        userData.add(userPassword);
+
+        return userData;
+    }
 
     private Map<String, String> sendQuerry(String querry)
     {
@@ -45,15 +97,14 @@ public class UserLogin {
 
     public void checkLogin()
     {
-        UserLogin usLog = new UserLogin();
         String login = "";
         String password = "";
 
-        List<String> userData = user.login();
+        List<String> userData = login();
         String userLogin = userData.get(0);
         String userPassword = userData.get(1);
 
-        for ( Map.Entry<String, String> entry : usLog.sendQuerry("SELECT name, password, " +
+        for ( Map.Entry<String, String> entry : sendQuerry("SELECT name, password, " +
                 "is_logged from Users").entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
@@ -64,7 +115,7 @@ public class UserLogin {
             if(userLogin.equals(login) && userPassword.equals(password))
             {
                 System.out.println("Logged successfully!");
-
+                //updateUser(login);
                 break;
             }
         }
@@ -75,4 +126,6 @@ public class UserLogin {
         //System.out.println("\nlogin: " + login + ", pass: " + password);
         //System.out.println("userInput: " + userLogin + ", pass: " + userPassword + "\n");
     }
+
+
 }
