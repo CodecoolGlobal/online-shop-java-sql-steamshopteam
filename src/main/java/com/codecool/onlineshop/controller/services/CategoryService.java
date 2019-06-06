@@ -14,17 +14,35 @@ public class CategoryService {
     }
 
 
+    public List readAllCategory(){
+        return categoryDao.read();
+
+    }
+
+    public Category readOf(int index){
+        List<Category> categoryList = categoryDao.read();
+        Category cat = new Category() ;
+
+        for(Category category : categoryList){
+            if(category.getId() == index){
+                cat = category;
+            }
+        }
+        return cat;
+    }
+
     public void create(String categoryName) {
         categoryDao.create(new Category(categoryName));
     }
 
     public void update(int index, String name) {
-        List<Category> categoryList = new ArrayList<>();
+        List<Category> categoryList;
         categoryList = categoryDao.read();
 
         for(Category category : categoryList){
             if(category.getId() == index){
-
+                category.setName(name);
+                categoryDao.update(category);
             }
 
         }

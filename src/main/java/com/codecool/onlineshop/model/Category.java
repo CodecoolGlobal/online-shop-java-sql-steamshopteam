@@ -5,7 +5,10 @@ public class Category {
     private String name;
     private int isAvailable;
 
-    public Category( String name) {
+    public Category() {
+    }
+
+    public Category(String name) {
         this.name = name;
         this.isAvailable = isAvailable;
     }
