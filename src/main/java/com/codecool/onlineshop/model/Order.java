@@ -10,6 +10,9 @@ public class Order {
     private int id_status;
     private int id_product;
 
+    public Order() {
+    }
+
     public Order(int id_order, String orderDate, String payDate, int id_owner, int id_status, int id_product) {
         this.id_order = id_order;
         this.orderDate = orderDate;
@@ -53,7 +56,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return this.id_order + " " + this.orderDate + " " + this.payDate + " " + this.id_order + " " + this.id_status +
+        return this.id_order + " " + this.orderDate + " " + this.payDate + " " + this.id_owner + " " + this.id_status +
                 " " + this.id_product + "\n";
     }
 }
