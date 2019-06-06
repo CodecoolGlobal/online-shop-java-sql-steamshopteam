@@ -13,13 +13,14 @@ import java.util.Map;
 public class UserLogin {
 
     private User user = new User(0, "", "", 0);
-    private boolean isLogged;
+
 
     private Map<String, String> sendQuerry(String querry)
     {
         Map<String, String> userData = new HashMap<>();
         String login;
         String password;
+        boolean isLogged = false;
 
         try {
             ConnectToSql connect = new ConnectToSql();
@@ -42,7 +43,7 @@ public class UserLogin {
         return userData;
     }
 
-    private void checkLogin()
+    public void checkLogin()
     {
         UserLogin usLog = new UserLogin();
         String login = "";
@@ -53,7 +54,7 @@ public class UserLogin {
         String userPassword = userData.get(1);
 
         for ( Map.Entry<String, String> entry : usLog.sendQuerry("SELECT name, password, " +
-                "id_permission from Users").entrySet()) {
+                "is_logged from Users").entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
 
@@ -63,7 +64,7 @@ public class UserLogin {
             if(userLogin.equals(login) && userPassword.equals(password))
             {
                 System.out.println("Logged successfully!");
-                isLogged = true;
+
                 break;
             }
         }
@@ -71,7 +72,7 @@ public class UserLogin {
             System.out.println("Wrong login or password!");
         }
         //------- debug -------- log and pass from sql; user input log and pass
-        System.out.println("\nlogin: " + login + ", pass: " + password);
-        System.out.println("userInput: " + userLogin + ", pass: " + userPassword + "\n");
+        //System.out.println("\nlogin: " + login + ", pass: " + password);
+        //System.out.println("userInput: " + userLogin + ", pass: " + userPassword + "\n");
     }
 }

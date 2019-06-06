@@ -19,6 +19,11 @@ public class User {
         this.permission = permission;
     }
 
+    public User()
+    {
+
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -39,18 +44,16 @@ public class User {
 
     public List login()
     {
-        String userInput = "";
-        userInput = input.input();
         String userLogin;
         String userPassword;
         List<String> userData = new ArrayList<>();
 
         System.out.print("Login: ");
-        userLogin = userInput;
+        userLogin = input.input();
         userData.add(userLogin);
 
         System.out.print("Password: ");
-        userPassword = userInput;
+        userPassword = input.input();
         userData.add(userPassword);
 
         return userData;
