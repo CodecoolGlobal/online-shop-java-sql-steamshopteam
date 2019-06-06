@@ -30,16 +30,25 @@ public class UserService {
         }
         return null;
     }
-    public void updateUser(String userName){
-        List<User> userList = userDao.read();
-        for(User user : userList){
-            if(user.getUserName().equals(userName)){
-                userDao.update(user);
-            }
-        }
-
-
-
+    public void updateUserName(String userName, String newUserName){
+        User user = readOf(userName);
+        user.setUserName(newUserName);
+        userDao.update(user);
+    }
+    public void updateUserPassword(String userName, String newPassword){
+        User user = readOf(userName);
+        user.setPassword(newPassword);
+        userDao.update(user);
+    }
+    public void updateUserIdPermission(String userName, int newPermissionId){
+        User user = readOf(userName);
+        user.setPermission(newPermissionId);
+        userDao.update(user);
+    }
+    public void updateUserLogin(String userName, int isLogged){
+        User user = readOf(userName);
+        user.setIsLogged(isLogged);
+        userDao.update(user);
     }
 
 

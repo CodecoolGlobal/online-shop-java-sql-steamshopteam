@@ -60,7 +60,7 @@ public class UserDao implements Dao<User> {
         try {
             sqlImplementation.doQuery("UPDATE users SET password = '"+user.getPassword()+"'," +
                     "name = '"+user.getUserName()+"', id_permission = '"+user.getPermission()+"'," +
-                    "is_logged = '"+user.isLogged()+"'");
+                    "is_logged = '"+user.isLogged()+"' WHERE id = '"+user.getUserId()+"'");
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
         }
