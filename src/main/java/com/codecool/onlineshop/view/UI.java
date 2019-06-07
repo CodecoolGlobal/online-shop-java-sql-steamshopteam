@@ -11,8 +11,7 @@ public class UI {
     private UserInput input = new UserInput();
     private UserLogin userLogin = new UserLogin();
 
-    public void start()
-    {
+    public void start() {
         showMenu();
     }
 

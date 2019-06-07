@@ -14,10 +14,6 @@ public class UserLogin {
         String userPassword;
         List<User> allUsers = userService.readAllUsers();
 
-        for (User user : allUsers) {
-            System.out.println(user.getUserName());
-        }
-
         System.out.print("Login: ");
         userLogin = input.input();
 
@@ -28,12 +24,14 @@ public class UserLogin {
                 userPassword = input.input();
 
                 if (user.getPassword().equals(userPassword)) {
-                    System.out.println("Login successfull");
+                    System.out.println("Login successfull\n");
 
                     userService.updateUserLogin(userLogin, 1);
                 } else {
-                    System.out.println("Wrong password!");
+                    System.out.println("Wrong password!\n");
                 }
+            } else {
+                System.out.println("\n");
             }
         }
     }
