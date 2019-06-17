@@ -21,7 +21,7 @@ public class UserDao implements Dao<User> {
 
         //todo register new user
         try {
-            newUser = new User(3,"dupa", "yo", 1);
+            //newUser = new User(3,"dupa", "yo", 1);
             sqlImplementation.doQuery("INSERT INTO Users(password, name, id_permission) VALUES ('"+newUser.getPassword()+"','"+newUser.getUserName()+"', '"+newUser.getPermission()+"')");
         } catch (Exception e) {
             e.printStackTrace();
