@@ -9,13 +9,36 @@ public class User {
     private String userName;
     private String password;
     private int permission;
+    private int isLogged;
 
-    public User(int userId, String userName, String password, int permission){
+    public int isLogged() {
+        return isLogged;
+    }
+
+    public User(int userId, String userName, String password, int permission, int isLogged){
         this.userId = userId;
         this.userName = userName;
         this.password = password;
         this.permission = permission;
+        this.isLogged = isLogged;
     }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPermission(int permission) {
+        this.permission = permission;
+    }
+
+    public void setIsLogged(int isLogged) {
+        this.isLogged = isLogged;
+    }
+
     public User(String userName, String password, int permission){
         this.userName = userName;
         this.password = password;
