@@ -8,7 +8,7 @@ public class Product {
     private int isAvailable;
     private int categoryId;
 
-    public Product(int id, String name, float price, int amount, int isAvailable, int categoryId) {
+    public Product(int id, String name, int amount, int isAvailable, int categoryId, float price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -16,7 +16,7 @@ public class Product {
         this.isAvailable = isAvailable;
         this.categoryId = categoryId;
     }
-    public Product(String name, float price, int amount, int isAvailable, int categoryId) {
+    public Product(String name, int amount, int isAvailable, int categoryId, float price) {
         this.name = name;
         this.price = price;
         this.amount = amount;
@@ -68,10 +68,9 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public String ToString()
-    {
-        String txt = "";
+    @Override
+    public String toString() {
 
-        return txt;
+        return id + " " + name + " " + price + " " + amount + " " + isAvailable + " " + categoryId;
     }
 }

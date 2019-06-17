@@ -1,6 +1,6 @@
 package com.codecool.onlineshop.view;
 
-import com.codecool.onlineshop.dao.Product;
+import com.codecool.onlineshop.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +31,8 @@ public class Viewer {
     productsToString will read List of products
     and put it to list of lists (each product as a row)
      */
+    /*
+
     public List<List<String>> productsToString(List<Product> products){
         List<List<String>> list = new ArrayList<>();
         for (Product product : products) {
@@ -45,5 +47,7 @@ public class Viewer {
             list.add(temp);
         }
         return list;
-    }
+    }*/
+
+
 }
