@@ -5,41 +5,31 @@ import com.codecool.onlineshop.model.UserLogin;
 
 public class UI {
 
-    private boolean isLogged;
-    private int permission;
-
     private UserInput input = new UserInput();
     private UserLogin userLogin = new UserLogin();
 
-    public void start() {
-        showMenu();
+    public void start(boolean isLogged) {
+        showMenu(isLogged);
     }
 
-    private void showMenu()
+    private void showMenu(boolean isLogged)
     {
-        int userPerm = 0;
-        int adminPerm = 1;
 
-        if(isLogged && permission == userPerm)
+        if(isLogged)
             showShopMenu();
-        else if(isLogged && permission == adminPerm)
-            showAdminPanel();
         else
             showLoginMenu();
     }
 
     private void showLoginMenu()
     {
-        int choice = 0;
-
         System.out.println("1. Login\n2. Exit");
-        choice = Integer.parseInt(input.input());
+        int choice = Integer.parseInt(input.input());
 
         switch (choice)
         {
             case 1:
                 userLogin.login();
-                showMenu();
             case 2:
                 System.exit(0);
         }
