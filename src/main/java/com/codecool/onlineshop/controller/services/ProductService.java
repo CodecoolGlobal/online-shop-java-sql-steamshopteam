@@ -23,7 +23,7 @@ public class ProductService {
     public Product getProductByName(String productName){
         List<Product> productList = getAllProducts();
         for(Product product: productList){
-            if (product.getName() == productName){
+            if (product.getName().equals(productName)){
                 return product;
             }
         }
