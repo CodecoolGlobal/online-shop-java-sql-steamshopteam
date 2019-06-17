@@ -35,6 +35,25 @@ public class UI {
         }
     }
 
+    private void menuSwitch(int choice)
+    {
+        switch (choice)
+        {
+            case 1:
+                System.out.println("1");
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+        }
+    }
+
     private void showShopMenu()
     {
         System.out.println("1. Add product to basket\n" +
@@ -47,7 +66,10 @@ public class UI {
                 "8. Show product in category\n" +
                 "9. Show products availability\n" +
                 "10. Rate product\n" +
-                "11. Order history statistics");
+                "11. Order history statistics\n");
+
+        int choice = Integer.parseInt(input.input());
+        menuSwitch(choice);
     }
 
     private void showAdminPanel()
@@ -61,5 +83,8 @@ public class UI {
                 "7. Create discount\n" +
                 "8. Show orders list\n" +
                 "9. Show orders feedbacks\n");
+
+        int choice = Integer.parseInt(input.input());
+        menuSwitch(choice);
     }
 }

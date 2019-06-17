@@ -16,6 +16,13 @@ public class Product {
         this.isAvailable = isAvailable;
         this.categoryId = categoryId;
     }
+    public Product(String name, float price, int amount, int isAvailable, int categoryId) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.isAvailable = isAvailable;
+        this.categoryId = categoryId;
+    }
 
     public int getId() {
         return id;
@@ -39,6 +46,26 @@ public class Product {
 
     public int getCategoryId() {
         return categoryId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public void setIsAvailable(int isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String ToString()

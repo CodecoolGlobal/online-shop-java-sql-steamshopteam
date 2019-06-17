@@ -14,17 +14,17 @@ public class CategoryService {
     }
 
 
-    public List readAllCategory(){
+    public List readAllCategory() {
         return categoryDao.read();
 
     }
 
-    public Category readOf(int index){
+    public Category readOf(int index) {
         List<Category> categoryList = categoryDao.read();
-        Category cat = new Category() ;
+        Category cat = new Category();
 
-        for(Category category : categoryList){
-            if(category.getId() == index){
+        for (Category category : categoryList) {
+            if (category.getId() == index) {
                 cat = category;
             }
         }
@@ -39,15 +39,21 @@ public class CategoryService {
         List<Category> categoryList;
         categoryList = categoryDao.read();
 
-        for(Category category : categoryList){
-            if(category.getId() == index){
-                category.setName(name);
-                categoryDao.update(category);
+            for (Category category : categoryList) {
+                if (category.getId() == index) {
+                    category.setName(name);
+                    categoryDao.update(category);
+                }
             }
-
-
-        }
-
     }
 
+    public boolean indexExist(int index, List<Category> categoryList) {
+        for (Category category : categoryList) {
+            if (category.getId() == index)
+                return true;
+        }
+
+        return false;
+
+    }
 }
