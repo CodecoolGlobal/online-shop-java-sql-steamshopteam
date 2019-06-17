@@ -20,25 +20,41 @@ public class ProductService {
         return productDao.read();
     }
 
-    public Product getProductById(int productId){
+    public Product getProductByName(String productName){
         List<Product> productList = getAllProducts();
         for(Product product: productList){
-            if (product.getId() == productId){
+            if (product.getName() == productName){
                 return product;
             }
         }
         return null;
     }
 
-    public void updateProduct(String name){
-        List<Product> productList = getAllProducts();
-        for(Product product : productList){
-            if(product.getName().equals(name)){
-                productDao.update(product);
-            }
-            System.out.println("Something went wrong!");
-        }
 
+    public void updateProductName(String productName, String newProductName){
+        Product product = getProductByName(productName);
+        product.setName(newProductName);
+        productDao.update(product);
+    }
+    public void updateProductAmount(String productName, int newAmount){
+        Product product = getProductByName(productName);
+        product.setAmount(newAmount);
+        productDao.update(product);
+    }
+    public void updateProductIsAvailable(String productName, int isAvailable){
+        Product product = getProductByName(productName);
+        product.setIsAvailable(isAvailable);
+        productDao.update(product);
+    }
+    public void updateProductCategory(String productName, int productCategory){
+        Product product = getProductByName(productName);
+        product.setCategoryId(productCategory);
+        productDao.update(product);
+    }
 
+    public void updateProductPrice(String productName, float price){
+        Product product = getProductByName(productName);
+        product.setPrice(price);
+        productDao.update(product);
     }
 }
