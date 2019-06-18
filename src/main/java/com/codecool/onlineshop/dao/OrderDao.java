@@ -20,10 +20,10 @@ public class OrderDao implements Dao<Order> {
 
 
     @Override
-    public void create(Order obj) {
-        sqlImplementation.doQuery(" INSERT INTO Orders(order_create, pay_date,id_owner,id_status,id_product)" +
-                " VALUES('" + obj.getOrderDate() + "', '" + obj.getPayDate() + "', '" + obj.getId_owner() + "', '" +
-                obj.getId_status() + "', '" + obj.getId_product() + "')");
+    public void create(Order order) {
+        sqlImplementation.doQuery(" INSERT INTO orders(order_create, pay_date,id_owner,id_status,id_product)" +
+                " VALUES('" + order.getOrderDate() + "', '" + order.getPayDate() + "', '" + order.getId_owner() + "', '" +
+                order.getId_status() + "', '" + order.getId_product() + "')");
         sqlImplementation.closeQuery();
 
     }
@@ -55,12 +55,13 @@ public class OrderDao implements Dao<Order> {
     }
 
     @Override
-    public void update(Order obj) {
+    public void update(Order order) {
 
-        //toDo: Implement
 
         try {
-            throw new UnsupportedOperationException("not implementet yet");
+            sqlImplementation.doQuery("UPDATE orders SET order_create = '"+order.getOrderDate()+"'," +
+                    " pay_date = '"+order.getPayDate()+"', id_owner = '"+order.getId_owner()+"', id_status = '"+order.getId_status()+"'," +
+                    " id_product = '"+order.getId_product()+"' WHERE id_owner = '"+order.getId_owner()+"'");
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
         }

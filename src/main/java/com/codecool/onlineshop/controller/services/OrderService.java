@@ -36,7 +36,6 @@ public class OrderService {
         List<Order> orderList = new ArrayList<>();
         List<Order> filteredOrderList = new ArrayList<>();
 
-        Order ord = new Order();
         orderList = orderDao.read();
 
         for (Order order : orderList) {

@@ -28,6 +28,7 @@ public class BasketService {
     }
 
     public Basket getUserBasket(User user) {
+        //todo
         List<Basket> basketList = basketDao.read();
         for (Basket basket : basketList) {
             if (basket.getOwnerId() == user.getUserId()) {
