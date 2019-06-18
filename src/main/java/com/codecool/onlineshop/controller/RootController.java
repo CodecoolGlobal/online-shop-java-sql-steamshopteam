@@ -8,7 +8,7 @@ public class RootController {
      public void run(){
          //categoryController.createNewCategory();
          //categoryController.editNameExistCategory();
-         productController.deactiveEmptyProduct();
+         //productController.deactiveEmptyProduct();
          productController.updateProduct();
      }
 }

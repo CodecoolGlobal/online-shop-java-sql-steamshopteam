@@ -51,7 +51,7 @@ public class ProductController {
         Print.printText("Product name");
         tmpString = ReadInput.UserStringInput();
         productName = (tmpString.equals("")) ? "" : tmpString;
-        System.out.println(productName);
+        System.out.println();
         Print.printText("Product amount");
         tmpInt = ReadInput.UserStringInput();
         amount = (tmpInt.equals("")) ? -1 : Integer.parseInt(tmpInt);
