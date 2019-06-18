@@ -1,13 +1,13 @@
 package com.codecool.onlineshop.view;
 
+import com.codecool.onlineshop.controller.ReadInput;
 import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.model.ConvertToArrays;
-import com.codecool.onlineshop.model.UserInput;
 import com.codecool.onlineshop.model.UserLogin;
 
 public class UI {
 
-    private UserInput input = new UserInput();
+    private ReadInput input = new ReadInput();
     private UserLogin userLogin = new UserLogin();
     private ConvertToArrays converter = new ConvertToArrays();
     ProductService productService = new ProductService();
@@ -28,7 +28,7 @@ public class UI {
     private void showLoginMenu()
     {
         System.out.println("1. Login\n2. Exit");
-        int choice = Integer.parseInt(input.input());
+        int choice = Integer.parseInt(input.UserStringInput());
 
         switch (choice)
         {
@@ -47,6 +47,7 @@ public class UI {
             case 1:
                 System.out.println("1");
             case 2:
+                converter.sendProductsToTable(null);
             case 3:
             case 4:
             case 5:
@@ -74,7 +75,7 @@ public class UI {
                 "10. Rate product\n" +
                 "11. Order history statistics\n");
 
-        int choice = Integer.parseInt(input.input());
+        int choice = Integer.parseInt(input.UserStringInput());
         menuSwitch(choice);
     }
 
@@ -90,7 +91,7 @@ public class UI {
                 "8. Show orders list\n" +
                 "9. Show orders feedbacks\n");
 
-        int choice = Integer.parseInt(input.input());
+        int choice = Integer.parseInt(input.UserStringInput());
         menuSwitch(choice);
     }
 }

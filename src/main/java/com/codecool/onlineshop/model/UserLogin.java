@@ -1,5 +1,6 @@
 package com.codecool.onlineshop.model;
 
+import com.codecool.onlineshop.controller.ReadInput;
 import com.codecool.onlineshop.controller.services.UserService;
 import com.codecool.onlineshop.dao.MainTest;
 import com.codecool.onlineshop.view.UI;
@@ -9,7 +10,7 @@ import java.util.List;
 public class UserLogin {
 
     private UserService userService = new UserService();
-    private UserInput input = new UserInput();
+    private ReadInput input = new ReadInput();
 
     private boolean isLogged = false;
 
@@ -19,7 +20,7 @@ public class UserLogin {
         List<User> allUsers = userService.readAllUsers();
 
         System.out.print("Login: ");
-        userLogin = input.input();
+        userLogin = input.UserStringInput();
 
         if(!isLogged)
         {
@@ -27,7 +28,7 @@ public class UserLogin {
 
                 if (userLogin.equals(user.getUserName())) {
                     System.out.print("Password: ");
-                    userPassword = input.input();
+                    userPassword = input.UserStringInput();
 
                     if (user.getPassword().equals(userPassword)) {
                         System.out.println("Login successfull\n");
