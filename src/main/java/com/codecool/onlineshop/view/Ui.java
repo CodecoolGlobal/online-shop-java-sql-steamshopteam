@@ -2,58 +2,70 @@ package com.codecool.onlineshop.view;
 
 import com.codecool.onlineshop.controller.BasketController;
 import com.codecool.onlineshop.controller.ReadInput;
+import com.codecool.onlineshop.controller.RootController;
 import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.model.ConvertToArrays;
 import com.codecool.onlineshop.model.UserLogin;
 
-public class UI {
+public class Ui {
 
-    private UserLogin userLogin = new UserLogin();
+    private UserLogin userLogin;
     private ConvertToArrays converter = new ConvertToArrays();
-    private ProductService productService = new ProductService();
+    private ProductService productService;
+    private RootController rootController = new RootController();
+    private boolean isLogged = false;
 
     private int permission;
 
-    public void start(boolean isLogged)
-    {
-        showMenu(isLogged);
+    public Ui(UserLogin userLogin, ProductService productService) {
+        this.userLogin = userLogin;
+        this.productService = productService;
 
-        while(isLogged)
-            showMenu(isLogged);
     }
 
-    private void showMenu(boolean isLogged)
-    {
-        int userPerm = 2;
-        int adminPerm = 1;
-        permission = userLogin.getLoggedUser().getPermission();
+    public void setLogged(boolean logged) {
+        isLogged = logged;
+    }
 
-        if(isLogged && permission == userPerm) {
-            showShopMenu();
-        } else if(isLogged && permission == adminPerm)
-            showAdminPanel();
-        else {
+    public void start() {
+        System.out.println(isLogged);
+        if (this.isLogged) {
+            showMenu();
+        } else {
             showLoginMenu();
         }
+
+
     }
 
-    private void showLoginMenu()
-    {
+    private void showMenu() {
+        int userPerm = 2;
+        int adminPerm = 1;
+        this.permission = userLogin.getLoggedUser().getPermission();
+        while (isLogged) {
+            if (permission == userPerm) {
+                showShopMenu();
+            } else if (permission == adminPerm) {
+                showAdminPanel();
+            }
+        }
+
+    }
+
+    private void showLoginMenu() {
         System.out.println("1. Login\n2. Exit");
         int choice = ReadInput.UserIntInput();
 
-        switch (choice)
-        {
+        switch (choice) {
             case 1:
-                userLogin.login();
+                userLogin.login(this, rootController);
             case 2:
                 System.exit(0);
         }
     }
 
-    private void menuSwitch(int choice)
-    {
-        if(permission == 1) {
+    private void menuSwitch(int choice) {
+        if (permission == 1) {
             switch (choice) {
                 case 1:
                 case 2:
@@ -68,9 +80,12 @@ public class UI {
         } else {
             switch (choice) {
                 case 1:
+                    System.out.println(userLogin.getLoggedUser().getUserName());
                     BasketController basketController = new BasketController(userLogin.getLoggedUser());
                     basketController.addProductToBasket();
+                    break;
                 case 2:
+                    //todo tu jest jakis problem z permission/ nie wiem dokladnie co to ma robic
                     converter.sendProductsToTable(null, permission);
                 case 3:
                 case 4:
@@ -86,8 +101,7 @@ public class UI {
         }
     }
 
-    private void showShopMenu()
-    {
+    private void showShopMenu() {
         System.out.println("1. Add product to basket\n" +
                 "2. Show basket\n" +
                 "3. Edit basket\n" +
@@ -104,8 +118,7 @@ public class UI {
         menuSwitch(choice);
     }
 
-    private void showAdminPanel()
-    {
+    private void showAdminPanel() {
         System.out.println("1. Add new category\n" +
                 "2. Edit category\n" +
                 "3. Automatic deactive product\n" +
