@@ -72,4 +72,32 @@ public class ProductService {
         }
     }
 
+    public void updateProduct(String name, String productName, int amount, int is_available, int categoryId, float price) {
+        List<Product> productList;
+        productList = getAllProducts();
+        for (Product product : productList) {
+            if (product.getName().equals(name)) {
+                if (!productName.equals("")){
+                    System.out.println("jestem tu");
+                    System.out.println(productName);
+                    updateProductName(name,productName);
+                }
+                if (amount != -1) {
+                    updateProductAmount(name, amount);
+                }
+                if (is_available != -1) {
+                    updateProductIsAvailable(name, is_available);
+                }
+                if (categoryId != -1) {
+                    updateProductCategory(name, categoryId);
+                }
+                if(price != 0.0){
+                    updateProductPrice(name,price);
+                }
+
+            }
+        }
+
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.codecool.onlineshop.dao;
 
+import com.codecool.onlineshop.model.Product;
+
 import java.util.ArrayList;
 import java.util.List;
 

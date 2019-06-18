@@ -9,5 +9,6 @@ public class RootController {
          //categoryController.createNewCategory();
          //categoryController.editNameExistCategory();
          productController.deactiveEmptyProduct();
+         productController.updateProduct();
      }
 }
