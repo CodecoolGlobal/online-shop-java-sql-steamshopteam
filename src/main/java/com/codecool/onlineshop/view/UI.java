@@ -50,25 +50,36 @@ public class UI {
         }
     }
 
-
     private void menuSwitch(int choice)
     {
-        switch (choice)
-        {
-            case 1:
-                System.out.println("1");
-            case 2:
-                converter.sendProductsToTable(null);
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-                converter.sendProductsToTable(productService.getAllProducts());
-            case 8:
-            case 9:
-            case 10:
-            case 11:
+        if(permission == 1) {
+            switch (choice) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+            }
+        } else {
+            switch (choice) {
+                case 1:
+                case 2:
+                    converter.sendProductsToTable(null, permission);
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    converter.sendProductsToTable(productService.getAllProducts(), permission);
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+            }
         }
     }
 

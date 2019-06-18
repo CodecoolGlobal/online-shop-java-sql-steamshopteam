@@ -24,6 +24,8 @@ public class UserLogin
         userLogin = ReadInput.UserStringInput();
 
         boolean isLogged = false;
+        int adminPerm = 1;
+
         if(!isLogged)
         {
             for (User user : allUsers)
@@ -36,7 +38,7 @@ public class UserLogin
                     {
                         loggedUser = user;
                         System.out.println("Login successfull\nPermission: "
-                                + (getLoggedUser().getPermission() == 1 ? "Admin\n" : "User\n"));
+                                + (getLoggedUser().getPermission() == adminPerm ? "Admin\n" : "User\n"));
                         MainTest.start(true);
                     } else {
                         System.out.println("Wrong password!\n");

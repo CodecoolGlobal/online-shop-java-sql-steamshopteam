@@ -1,7 +1,5 @@
 package com.codecool.onlineshop.view;
 
-import com.codecool.onlineshop.model.Product;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,20 +8,23 @@ public class Viewer {
     /*
     displayTable merges headers with content and display it in console
      */
-    public void displayTable(List<List<String>> table){
+
+    public void displayTable(List<List<String>> table, int permission){
         List<String> headers = new ArrayList<>();
-        headers.add("ID");
+        int adminPerm = 1;
+
+        if(permission == adminPerm ? headers.add("ID") : headers.add("Id"))
         headers.add("NAME");
         headers.add("PRICE");
         headers.add("AMOUNT");
         headers.add("isAVAILABLE");
         headers.add("CATEGORY");
-        PrintTable newTable = new PrintTable(headers,  table , false);
+        PrintTable newTable = new PrintTable(headers, table,false);
         String tableToPrint = newTable.printTable();
         display(tableToPrint);
     }
 
-    public void display(String content){
+    private void display(String content){
         System.out.println(content);
     }
 
