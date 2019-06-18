@@ -10,7 +10,6 @@ import java.util.List;
 public class UserLogin {
 
     private UserService userService = new UserService();
-    private ReadInput input = new ReadInput();
 
     private boolean isLogged = false;
 
@@ -20,7 +19,7 @@ public class UserLogin {
         List<User> allUsers = userService.readAllUsers();
 
         System.out.print("Login: ");
-        userLogin = input.UserStringInput();
+        userLogin = ReadInput.UserStringInput();
 
         if(!isLogged)
         {
@@ -28,7 +27,7 @@ public class UserLogin {
 
                 if (userLogin.equals(user.getUserName())) {
                     System.out.print("Password: ");
-                    userPassword = input.UserStringInput();
+                    userPassword = ReadInput.UserStringInput();
 
                     if (user.getPassword().equals(userPassword)) {
                         System.out.println("Login successfull\n");

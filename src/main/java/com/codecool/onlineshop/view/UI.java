@@ -7,7 +7,6 @@ import com.codecool.onlineshop.model.UserLogin;
 
 public class UI {
 
-    private ReadInput input = new ReadInput();
     private UserLogin userLogin = new UserLogin();
     private ConvertToArrays converter = new ConvertToArrays();
     ProductService productService = new ProductService();
@@ -28,7 +27,7 @@ public class UI {
     private void showLoginMenu()
     {
         System.out.println("1. Login\n2. Exit");
-        int choice = Integer.parseInt(input.UserStringInput());
+        int choice = ReadInput.UserIntInput();
 
         switch (choice)
         {
@@ -75,7 +74,7 @@ public class UI {
                 "10. Rate product\n" +
                 "11. Order history statistics\n");
 
-        int choice = Integer.parseInt(input.UserStringInput());
+        int choice = ReadInput.UserIntInput();
         menuSwitch(choice);
     }
 
@@ -91,7 +90,7 @@ public class UI {
                 "8. Show orders list\n" +
                 "9. Show orders feedbacks\n");
 
-        int choice = Integer.parseInt(input.UserStringInput());
+        int choice = ReadInput.UserIntInput();
         menuSwitch(choice);
     }
 }
