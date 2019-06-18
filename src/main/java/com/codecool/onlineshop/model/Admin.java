@@ -26,7 +26,7 @@ public class Admin extends User {
 
     public void createNewProduct()
     {
-        productDao.create(new Product(0, "", 0.0f, 0, 0, 0));
+        productDao.create(new Product(0, "", 0, 0, 0, 0));
     }
 
     public void editProductProperties(int productId)

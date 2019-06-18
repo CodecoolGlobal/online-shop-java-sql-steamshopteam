@@ -13,7 +13,7 @@ public class ProductService {
 
 
     public void create(String name, int amount, int is_available, int categoryId, float price) {
-        productDao.create(new Product(name, price, amount, is_available, categoryId));
+        productDao.create(new Product(name, amount, is_available, categoryId, price));
     }
 
     public List getAllProducts(){

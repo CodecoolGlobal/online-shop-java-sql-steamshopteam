@@ -1,18 +1,16 @@
 package com.codecool.onlineshop.view;
 
 import com.codecool.onlineshop.controller.services.ProductService;
-import com.codecool.onlineshop.model.Product;
+import com.codecool.onlineshop.model.ConvertToArrays;
 import com.codecool.onlineshop.model.UserInput;
 import com.codecool.onlineshop.model.UserLogin;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class UI {
 
     private UserInput input = new UserInput();
     private UserLogin userLogin = new UserLogin();
-    private Viewer viewer = new Viewer();
+    private ConvertToArrays converter = new ConvertToArrays();
+    ProductService productService = new ProductService();
 
     public void start(boolean isLogged) {
         showMenu(isLogged);
@@ -41,32 +39,6 @@ public class UI {
         }
     }
 
-    private void sendProductsToTable()
-    {
-        ProductService productService = new ProductService();
-
-        List<List<String>> productsList = new ArrayList<>();
-        List<Product> products;
-
-        products = productService.getAllProducts();
-
-        int counter = 0;
-        for (Product product : products)
-        {
-            productsList.add(new ArrayList<>());
-
-            productsList.get(counter).add(String.valueOf(product.getId()));
-            productsList.get(counter).add(product.getName());
-            productsList.get(counter).add(String.valueOf(product.getPrice()));
-            productsList.get(counter).add(String.valueOf(product.getAmount()));
-            productsList.get(counter).add(String.valueOf(product.getIsAvailable()));
-            productsList.get(counter).add(String.valueOf(product.getCategoryId()));
-
-            counter += 1;
-        }
-
-        viewer.displayTable(productsList);
-    }
 
     private void menuSwitch(int choice)
     {
@@ -80,7 +52,7 @@ public class UI {
             case 5:
             case 6:
             case 7:
-                sendProductsToTable();
+                converter.sendProductsToTable(productService.getAllProducts());
             case 8:
             case 9:
             case 10:
