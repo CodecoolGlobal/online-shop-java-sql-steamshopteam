@@ -47,13 +47,11 @@ public class ProductDao implements Dao<Product> {
 
     @Override
     public void update(Product product) {
-
-        //toDo: Implement
-
         try {
             sqlImplementation.doQuery("UPDATE products SET name = '"+product.getName()+"'," +
                     " amount = '"+product.getAmount()+"', is_avaible = '"+product.getIsAvailable()+"'," +
-                    " id_category = '"+product.getCategoryId()+"', price = '"+product.getPrice()+"'");
+                    " id_category = '"+product.getCategoryId()+"', price = '"+product.getPrice()+"' WHERE " +
+                    "name = '" + product.getName()+ "'");
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
         }
