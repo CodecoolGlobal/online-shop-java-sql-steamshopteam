@@ -12,7 +12,7 @@ public class ProductController {
     }
 
     public void deactiveEmptyProduct() {
-        productService.deactiveProductWhenQuantityEquals0();
+        productService.deactivateProductWhenQuantityEquals0();
         Print.printText("Deactivate empty product");
     }
 
@@ -29,6 +29,10 @@ public class ProductController {
         float price = ReadInput.UserFloatInput();
 
         new ProductService().create(name, amount, isAvailable, categoryId, price);
+
+    }
+
+    public void updateProduct(){
 
     }
 }

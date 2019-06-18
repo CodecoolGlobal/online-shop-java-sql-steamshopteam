@@ -62,7 +62,7 @@ public class ProductService {
         productDao.update(product);
     }
 
-    public void deactiveProductWhenQuantityEquals0() {
+    public void deactivateProductWhenQuantityEquals0() {
         List<Product> productList;
         productList = getAllProducts();
         for (Product product : productList) {
