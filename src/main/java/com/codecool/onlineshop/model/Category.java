@@ -3,20 +3,17 @@ package com.codecool.onlineshop.model;
 public class Category {
     private int id;
     private String name;
-    private int isAvailable;
 
     public Category() {
     }
 
     public Category(String name) {
         this.name = name;
-        this.isAvailable = isAvailable;
     }
 
     public Category(int id, String name) {
         this.id = id;
         this.name = name;
-        this.isAvailable = isAvailable;
     }
 
     public int getId() {
@@ -35,16 +32,8 @@ public class Category {
         this.name = name;
     }
 
-    public int getIsAvailable() {
-        return isAvailable;
-    }
-
-    public void setIsAvailable(int isAvailable) {
-        this.isAvailable = isAvailable;
-    }
-
     @Override
     public String toString() {
-        return this.id + " " + this.name + " " + this.isAvailable;
+        return this.id + " " + this.name;
     }
 }

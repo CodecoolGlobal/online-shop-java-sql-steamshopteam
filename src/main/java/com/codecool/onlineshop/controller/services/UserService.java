@@ -30,6 +30,7 @@ public class UserService {
         }
         return null;
     }
+
     public void updateUserName(String userName, String newUserName){
         User user = readOf(userName);
         user.setUserName(newUserName);
@@ -50,8 +51,4 @@ public class UserService {
         user.setIsLogged(isLogged);
         userDao.update(user);
     }
-
-
-
-
 }

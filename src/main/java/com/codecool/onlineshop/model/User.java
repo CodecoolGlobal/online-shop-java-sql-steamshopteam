@@ -1,19 +1,11 @@
 package com.codecool.onlineshop.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class User {
     private int userId;
     private String userName;
     private String password;
     private int permission;
     private int isLogged;
-
-    public int isLogged() {
-        return isLogged;
-    }
 
     public User(int userId, String userName, String password, int permission, int isLogged){
         this.userId = userId;
@@ -45,6 +37,15 @@ public class User {
         this.permission = permission;
     }
 
+    public User()
+    {
+
+    }
+
+    public int isLogged() {
+        return isLogged;
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -61,27 +62,5 @@ public class User {
         return permission;
     }
 
-    public String userInput()
-    {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
-    }
-
-    public List login()
-    {
-        String userLogin;
-        String userPassword;
-        List<String> userData = new ArrayList<>();
-
-        System.out.print("Login: ");
-        userLogin = userInput();
-        userData.add(userLogin);
-
-        System.out.print("Password: ");
-        userPassword = userInput();
-        userData.add(userPassword);
-
-        return userData;
-    }
 }
 

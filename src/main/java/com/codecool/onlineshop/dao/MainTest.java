@@ -1,33 +1,22 @@
 package com.codecool.onlineshop.dao;
 
-import com.codecool.onlineshop.controller.services.BasketService;
-import com.codecool.onlineshop.controller.services.ProductService;
-import com.codecool.onlineshop.controller.services.UserService;
-import com.codecool.onlineshop.model.*;
-import com.codecool.onlineshop.model.Category;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.codecool.onlineshop.controller.RootController;
+import com.codecool.onlineshop.view.UI;
 
 public class MainTest {
 
-    public static void main(String[] args) {
-        BasketService basketService = new BasketService();
-        UserService userService = new UserService();
-        User user = userService.readOf("root");
-        ProductService productService = new ProductService();
-        Product product = productService.getProductByName("myszka");
+    private static final UI ui = new UI();
 
-        basketService.addProductToBasket(user, product, 5);
+    public static void main(String[] args)
+    {
+        RootController rootController = new RootController();
 
+        rootController.run();
+        start(false);
     }
 
-
+    public static void start(boolean isLogged)
+    {
+        ui.start(isLogged);
+    }
 }
-
-
