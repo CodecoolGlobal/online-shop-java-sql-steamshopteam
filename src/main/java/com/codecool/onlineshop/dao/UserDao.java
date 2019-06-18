@@ -40,7 +40,7 @@ public class UserDao implements Dao<User> {
                 int userId = resultSet.getInt("id");
                 String password = resultSet.getString("password");
                 String userName = resultSet.getString("name");
-                int permission = resultSet.getInt("permission");
+                int permission = resultSet.getInt("id_permission");
                 int isLogged = resultSet.getInt("is_logged");
                 User user = new User(userId, userName, password, permission, isLogged);
                 users.add(user);

@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 
 public class ReadInput {
 
-    public static String UserStringInput(){
+    public static String UserStringInput() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String readLine = "";
+        String readLine = "-1";
         try {
             readLine = reader.readLine();
         } catch (IOException e) {
@@ -17,7 +17,7 @@ public class ReadInput {
         return readLine;
     }
 
-    public static int UserIntInput(){
+    public static int UserIntInput() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String readLine = "-1";
         try {
@@ -27,4 +27,16 @@ public class ReadInput {
         }
         return Integer.parseInt(readLine);
     }
+
+    public static float UserFloatInput() {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String readLine = "-1";
+        try {
+            readLine = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Float.parseFloat(readLine);
+    }
 }
+

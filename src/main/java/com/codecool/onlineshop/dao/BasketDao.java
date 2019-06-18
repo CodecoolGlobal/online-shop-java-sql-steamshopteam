@@ -18,7 +18,7 @@ public class BasketDao implements Dao<Basket> {
 
     @Override
     public void create(Basket basket) {
-        sqlImplementation.doQuery("INSERT INTO baskets(ownerId, productId) VALUES ('"+basket.getOwnerId()+"','"+basket.getProduct()+"')");
+        sqlImplementation.doQuery("INSERT INTO baskets(ownerId, productId, amount) VALUES ('"+basket.getOwnerId()+"','"+basket.getProduct()+"', '"+basket.getAmount()+"')");
     }
 
     @Override
@@ -53,6 +53,7 @@ public class BasketDao implements Dao<Basket> {
 
     @Override
     public void delete(int id) {
+        sqlImplementation.doQuery("DELETE FROM baskets WHERE productId = '"+id+"'");
 
     }
 }

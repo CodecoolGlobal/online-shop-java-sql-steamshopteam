@@ -1,7 +1,10 @@
 package com.codecool.onlineshop.dao;
 
-import com.codecool.onlineshop.model.Basket;
-import com.codecool.onlineshop.model.User;
+import com.codecool.onlineshop.controller.services.BasketService;
+import com.codecool.onlineshop.controller.services.ProductService;
+import com.codecool.onlineshop.controller.services.UserService;
+import com.codecool.onlineshop.model.*;
+import com.codecool.onlineshop.model.Category;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,28 +13,21 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.codecool.onlineshop.model.Category;
-import com.codecool.onlineshop.model.Order;
 
 public class MainTest {
 
     public static void main(String[] args) {
-        BasketDao basketDao = new BasketDao();
-//        basketDao.create(new Basket(1, 4));
-//        basketDao.create(new Basket(1, 2));
-//        basketDao.create(new Basket(1, 3));
-//        basketDao.create(new Basket(1, 5));
-        List<Basket> baskets = basketDao.read();
-        for (Basket basket : baskets) {
-            if (basket.getAmount() == 0){
-                basketDao.update(new Basket(basket.getOwnerId(), basket.getProduct(), 5));
-            }
+        BasketService basketService = new BasketService();
+        UserService userService = new UserService();
+        User user = userService.readOf("root");
+        ProductService productService = new ProductService();
+        Product product = productService.getProductByName("myszka");
 
-        }
-        System.out.println(basketDao.read());
-
-
+        basketService.addProductToBasket(user, product, 5);
 
     }
 
+
 }
+
+
