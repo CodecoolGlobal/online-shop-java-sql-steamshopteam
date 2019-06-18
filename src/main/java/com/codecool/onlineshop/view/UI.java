@@ -9,19 +9,31 @@ public class UI {
 
     private UserLogin userLogin = new UserLogin();
     private ConvertToArrays converter = new ConvertToArrays();
-    ProductService productService = new ProductService();
+    private ProductService productService = new ProductService();
 
-    public void start(boolean isLogged) {
+    private int permission;
+
+    public void start(boolean isLogged)
+    {
         showMenu(isLogged);
+
+        while(isLogged)
+            showMenu(isLogged);
     }
 
     private void showMenu(boolean isLogged)
     {
+        int userPerm = 2;
+        int adminPerm = 1;
+        permission = userLogin.getLoggedUser().getPermission();
 
-        if(isLogged)
+        if(isLogged && permission == userPerm) {
             showShopMenu();
-        else
+        } else if(isLogged && permission == adminPerm)
+            showAdminPanel();
+        else {
             showLoginMenu();
+        }
     }
 
     private void showLoginMenu()

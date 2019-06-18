@@ -4,6 +4,8 @@ import com.codecool.onlineshop.view.UI;
 
 public class MainTest {
 
+    private static final UI ui = new UI();
+
     public static void main(String[] args)
     {
         start(false);
@@ -11,7 +13,6 @@ public class MainTest {
 
     public static void start(boolean isLogged)
     {
-        UI ui = new UI();
         ui.start(isLogged);
     }
 }

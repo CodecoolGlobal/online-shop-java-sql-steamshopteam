@@ -3,15 +3,17 @@ package com.codecool.onlineshop.model;
 import com.codecool.onlineshop.controller.ReadInput;
 import com.codecool.onlineshop.controller.services.UserService;
 import com.codecool.onlineshop.dao.MainTest;
-import com.codecool.onlineshop.view.UI;
 
 import java.util.List;
 
-public class UserLogin {
+public class UserLogin
+{
 
     private UserService userService = new UserService();
 
-    private boolean isLogged = false;
+    private User loggedUser = new User();
+
+    public User getLoggedUser() { return loggedUser; }
 
     public void login() {
         String userLogin;
@@ -21,16 +23,20 @@ public class UserLogin {
         System.out.print("Login: ");
         userLogin = ReadInput.UserStringInput();
 
+        boolean isLogged = false;
         if(!isLogged)
         {
-            for (User user : allUsers) {
-
-                if (userLogin.equals(user.getUserName())) {
+            for (User user : allUsers)
+            {
+                if (userLogin.equals(user.getUserName()))
+                {
                     System.out.print("Password: ");
                     userPassword = ReadInput.UserStringInput();
-
-                    if (user.getPassword().equals(userPassword)) {
-                        System.out.println("Login successfull\n");
+                    if (user.getPassword().equals(userPassword))
+                    {
+                        loggedUser = user;
+                        System.out.println("Login successfull\nPermission: "
+                                + (getLoggedUser().getPermission() == 1 ? "Admin\n" : "User\n"));
                         MainTest.start(true);
                     } else {
                         System.out.println("Wrong password!\n");
