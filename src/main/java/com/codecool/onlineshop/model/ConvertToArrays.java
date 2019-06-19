@@ -9,19 +9,17 @@ public class ConvertToArrays {
 
     private Viewer viewer = new Viewer();
 
-    public void sendProductsToTable(List<Product> incomingData, int permission)
+    public void sendProductsToTable(List<Product> incomingData)
     {
         List<List<String>> productsList = new ArrayList<>();
 
         int counter = 0;
-        int adminPerm = 1;
 
         for (Product product : incomingData)
         {
             productsList.add(new ArrayList<>());
 
-            if(permission == adminPerm ? productsList.get(counter).add(String.valueOf(product.getId()))
-                    : productsList.get(counter).add(String.valueOf(counter)));
+            productsList.get(counter).add(String.valueOf(counter + 1));
             productsList.get(counter).add(product.getName());
             productsList.get(counter).add(String.valueOf(product.getPrice()));
             productsList.get(counter).add(String.valueOf(product.getAmount()));
@@ -31,7 +29,27 @@ public class ConvertToArrays {
             counter += 1;
         }
 
-        viewer.displayTable(productsList, permission);
+        viewer.displayTable(productsList);
+    }
+
+    public void sendBasketToTable(List<Basket> incomingData)
+    {
+        List<List<String>> productsList = new ArrayList<>();
+
+        int counter = 0;
+
+        for (Basket basket : incomingData)
+        {
+            productsList.add(new ArrayList<>());
+
+            productsList.get(counter).add(String.valueOf(basket.getOwnerId()));
+            productsList.get(counter).add(String.valueOf(basket.getAmount()));
+            productsList.get(counter).add(String.valueOf(basket.getProduct()));
+
+            counter += 1;
+        }
+
+        viewer.displayTable(productsList);
     }
 
 }

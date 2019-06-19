@@ -1,10 +1,8 @@
 package com.codecool.onlineshop.model;
 
 import com.codecool.onlineshop.controller.ReadInput;
-import com.codecool.onlineshop.controller.RootController;
 import com.codecool.onlineshop.controller.services.UserService;
-import com.codecool.onlineshop.dao.MainTest;
-import com.codecool.onlineshop.view.Ui;
+import com.codecool.onlineshop.controller.UiController;
 
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class UserLogin
 
     public User getLoggedUser() { return loggedUser; }
 
-    public void login(Ui ui) {
+    public void login(UiController uiController) {
         String userLogin;
         String userPassword;
         List<User> allUsers = userService.readAllUsers();
@@ -41,8 +39,8 @@ public class UserLogin
                         loggedUser = user;
                         System.out.println("Login successfull\nPermission: "
                                 + (getLoggedUser().getPermission() == adminPerm ? "Admin\n" : "User\n"));
-                        ui.setLogged(true);
-                        ui.start();
+                        uiController.setLogged(true);
+                        uiController.start();
                     } else {
                         System.out.println("Wrong password!\n");
                     }

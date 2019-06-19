@@ -9,11 +9,10 @@ public class Viewer {
     displayTable merges headers with content and display it in console
      */
 
-    public void displayTable(List<List<String>> table, int permission){
+    public void displayTable(List<List<String>> table){
         List<String> headers = new ArrayList<>();
-        int adminPerm = 1;
 
-        if(permission == adminPerm ? headers.add("ID") : headers.add("Id"))
+        headers.add("ID");
         headers.add("NAME");
         headers.add("PRICE");
         headers.add("AMOUNT");
