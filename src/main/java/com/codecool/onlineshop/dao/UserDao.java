@@ -25,6 +25,8 @@ public class UserDao implements Dao<User> {
             sqlImplementation.doQuery("INSERT INTO Users(password, name, id_permission) VALUES ('"+newUser.getPassword()+"','"+newUser.getUserName()+"', '"+newUser.getPermission()+"')");
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            sqlImplementation.closeQuery();
         }
 
 
@@ -40,13 +42,15 @@ public class UserDao implements Dao<User> {
                 int userId = resultSet.getInt("id");
                 String password = resultSet.getString("password");
                 String userName = resultSet.getString("name");
-                int permission = resultSet.getInt("permission");
+                int permission = resultSet.getInt("id_permission");
                 int isLogged = resultSet.getInt("is_logged");
                 User user = new User(userId, userName, password, permission, isLogged);
                 users.add(user);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            sqlImplementation.closeQuery();
         }
         return users;
     }
@@ -63,6 +67,8 @@ public class UserDao implements Dao<User> {
                     "is_logged = '"+user.isLogged()+"' WHERE id = '"+user.getUserId()+"'");
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
+        } finally {
+            sqlImplementation.closeQuery();
         }
 
 

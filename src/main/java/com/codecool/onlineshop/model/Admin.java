@@ -1,23 +1,17 @@
 package com.codecool.onlineshop.model;
 
 import com.codecool.onlineshop.dao.CategoryDao;
+import com.codecool.onlineshop.dao.ProductDao;
 
 public class Admin extends User {
 
     CategoryDao categoryDao = new CategoryDao();
+    ProductDao productDao = new ProductDao();
 
-    public Admin(int userId, String userName, String password, int permission, int isLogged) {
-        super(userId, userName, password, permission, isLogged);
-    }
 
     private void addNewCategory()
     {
-        Category newCategory = new Category( "0");
-
-        newCategory.setId(10);
-        newCategory.setName("Mices");
-
-        categoryDao.create(newCategory);
+        categoryDao.create(new Category(0, ""));
     }
 
     private void editCategoryName(int categoryId)
@@ -32,7 +26,7 @@ public class Admin extends User {
 
     public void createNewProduct()
     {
-
+        productDao.create(new Product(0, "", 0, 0, 0, 0));
     }
 
     public void editProductProperties(int productId)

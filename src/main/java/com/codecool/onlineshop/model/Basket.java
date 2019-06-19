@@ -5,22 +5,25 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Basket {
-    private int id;
-    private Iterator iterator;
-    private List<Product> products = new ArrayList<>();
+    private int ownerId;
+    private int productId;
+    private int amount;
 
-    public Iterator getIterator()
-    {
-        return iterator;
+    public Basket(int ownerId, int productId, int amount) {
+        this.ownerId = ownerId;
+        this.productId = productId;
+        this.amount = amount;
     }
 
-    public void addProduct(Product product, int amount)
-    {
-
+    public int getOwnerId() {
+        return ownerId;
     }
 
-    public void deleteProduct(Product product)
-    {
+    public int getProduct() {
+        return productId;
+    }
 
+    public int getAmount() {
+        return amount;
     }
 }

@@ -51,7 +51,7 @@ public class ProductDao implements Dao<Product> {
             sqlImplementation.doQuery("UPDATE products SET name = '"+product.getName()+"'," +
                     " amount = '"+product.getAmount()+"', is_avaible = '"+product.getIsAvailable()+"'," +
                     " id_category = '"+product.getCategoryId()+"', price = '"+product.getPrice()+"' WHERE " +
-                    "name = '" + product.getName()+ "'");
+                    "id_product = '" + product.getId()+ "'");
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
         }
