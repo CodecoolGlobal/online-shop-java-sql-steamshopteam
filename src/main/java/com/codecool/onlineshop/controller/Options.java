@@ -15,10 +15,10 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 class Options {
+    UserLogin userLogin;
 
     ConvertToArrays converter = new ConvertToArrays();
     ProductService productService = new ProductService();
-    UserLogin userLogin;
 
     List<String> loadOptions(String filePath) throws IOException {
         List<String> options = new ArrayList<>();
@@ -63,9 +63,8 @@ class Options {
 
         options.put("11. Order history statistics", (a) -> System.out.println("showing basket"));
 
-        return options;
+        return null;
     }
-
 
     void run(String filePath, String userChoice) {
         try {
