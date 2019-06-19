@@ -13,6 +13,7 @@ public class Ui {
     private ConvertToArrays converter = new ConvertToArrays();
     private ProductService productService;
     private boolean isLogged = false;
+    private BasketController basketController;
 
     private int permission;
 
@@ -40,6 +41,7 @@ public class Ui {
         int userPerm = 2;
         int adminPerm = 1;
         this.permission = userLogin.getLoggedUser().getPermission();
+        this.basketController = new BasketController(userLogin.getLoggedUser());
         while (isLogged) {
             if (permission == userPerm) {
                 showShopMenu();
@@ -78,13 +80,15 @@ public class Ui {
         } else {
             switch (choice) {
                 case 1:
-                    BasketController basketController = new BasketController(userLogin.getLoggedUser());
                     basketController.addProductToBasket();
                     break;
                 case 2:
                     //todo tu jest jakis problem z permission/ nie wiem dokladnie co to ma robic
-                    converter.sendProductsToTable(null, permission);
+                    //converter.sendProductsToTable(basketController.showUserBasket(userLogin.getLoggedUser()), permission);
+                    break;
                 case 3:
+                    basketController.editBasket(userLogin.getLoggedUser());
+                    break;
                 case 4:
                 case 5:
                 case 6:

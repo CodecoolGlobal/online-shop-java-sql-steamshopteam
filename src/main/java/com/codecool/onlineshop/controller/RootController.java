@@ -10,6 +10,7 @@ public class RootController {
     private Ui ui;
     private UserLogin userLogin;
     private ProductService productService;
+    private BasketController basketController;
 
 
     CategoryController categoryController = new CategoryController();
@@ -23,8 +24,8 @@ public class RootController {
         ui.start();
 
         //user = userLogin.getLoggedUser();
-        BasketController basketController = new BasketController(user);
-        basketController.addProductToBasket();
+        //BasketController basketController = new BasketController(user);
+        //basketController.addProductToBasket();
         //categoryController.createNewCategory();
         //categoryController.editNameExistCategory();
         //productController.deactiveEmptyProduct();
