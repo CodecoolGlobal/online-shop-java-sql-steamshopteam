@@ -32,6 +32,18 @@ public class ProductService {
         return null;
     }
 
+    public Product getProductByName(String productName) {
+        List<Product> productList = getAllProducts();
+        for (Product product : productList) {
+            if (product.getName() == productName) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+
+
     public void updateProductName(int productId, String newProductName) {
         Product product = getProductById(productId);
         product.setName(newProductName);

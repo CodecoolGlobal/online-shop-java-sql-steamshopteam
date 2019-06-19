@@ -26,7 +26,7 @@ public class BasketService {
             for (Basket basket : basketList) {
                 if (basket.getProduct() != product.getId()) {
                     if (productService.getProductByName(product.getName()).getAmount() >= amount) {
-                        productService.updateProductAmount(product.getName(), product.getAmount() - amount);
+                        productService.updateProductAmount(product.getId(), product.getAmount() - amount);
                         basketDao.create(new Basket(user.getUserId(), product.getId(), amount));
                     } else {
                         System.out.println("Sorry but we haven`t got enough amount of this product!");
@@ -37,7 +37,7 @@ public class BasketService {
             }
         } else {
             if (productService.getProductByName(product.getName()).getAmount() >= amount) {
-                productService.updateProductAmount(product.getName(), product.getAmount() - amount);
+                productService.updateProductAmount(product.getId(), product.getAmount() - amount);
                 basketDao.create(new Basket(user.getUserId(), product.getId(), amount));
             } else {
                 System.out.println("Sorry but we haven`t got enough amount of this product!");
@@ -70,7 +70,7 @@ public class BasketService {
                 if (product.getName().equals(productName)) {
                     if (amount > basket.getAmount()) {
                         if ((amount - basket.getAmount()) <= productService.getProductByName(productName).getAmount()) {
-                            productService.updateProductAmount(productName, product.getAmount() - (amount - basket.getAmount()));
+                            productService.updateProductAmount(product.getId(), product.getAmount() - (amount - basket.getAmount()));
                             basketDao.update(new Basket(user.getUserId(), basket.getProduct(), amount));
                         } else {
                             System.out.println("Too much");
@@ -78,7 +78,7 @@ public class BasketService {
                     } else {
                         System.out.println(productService.getProductByName(productName).getAmount());
                         if (productService.getProductByName(productName).getAmount() >= amount) {
-                            productService.updateProductAmount(productName, product.getAmount() + (basket.getAmount() - amount));
+                            productService.updateProductAmount(product.getId(), product.getAmount() + (basket.getAmount() - amount));
                             basketDao.update(new Basket(user.getUserId(), basket.getProduct(), amount));
                         } else {
                             System.out.println("Too much");
@@ -96,7 +96,7 @@ public class BasketService {
             for (Basket basket : basketList) {
                 if (basket.getOwnerId() == user.getUserId()) {
                     System.out.println("elo");
-                    productService.updateProductAmount(product.getName(), product.getAmount() + basket.getAmount());
+                    productService.updateProductAmount(product.getId(), product.getAmount() + basket.getAmount());
                     basketDao.delete(product.getId());
                 }
             }
