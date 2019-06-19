@@ -54,6 +54,10 @@ public class Order {
         return id_product;
     }
 
+    public void setPayDate(String payDate) {
+        this.payDate = payDate;
+    }
+
     @Override
     public String toString() {
         return this.id_order + " " + this.orderDate + " " + this.payDate + " " + this.id_owner + " " + this.id_status +

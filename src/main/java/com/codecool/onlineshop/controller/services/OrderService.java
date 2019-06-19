@@ -1,6 +1,7 @@
 package com.codecool.onlineshop.controller.services;
 
 import com.codecool.onlineshop.dao.OrderDao;
+import com.codecool.onlineshop.model.Basket;
 import com.codecool.onlineshop.model.Order;
 
 import java.util.ArrayList;
@@ -48,6 +49,12 @@ public class OrderService {
 
     public void create(String orderCreateDate, String payDate, int idOwner, int idStatus, int idProduct){
         orderDao.create(new Order(orderCreateDate,payDate,idOwner,idStatus,idProduct));
+    }
+
+    public void payForOrder(Order order, String payDate){
+        order.setPayDate(payDate);
+        orderDao.update(order);
+
     }
 
 }

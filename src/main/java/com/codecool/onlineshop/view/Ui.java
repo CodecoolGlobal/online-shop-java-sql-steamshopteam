@@ -1,6 +1,7 @@
 package com.codecool.onlineshop.view;
 
 import com.codecool.onlineshop.controller.BasketController;
+import com.codecool.onlineshop.controller.OrderController;
 import com.codecool.onlineshop.controller.ReadInput;
 import com.codecool.onlineshop.controller.RootController;
 import com.codecool.onlineshop.controller.services.ProductService;
@@ -14,6 +15,7 @@ public class Ui {
     private ProductService productService;
     private boolean isLogged = false;
     private BasketController basketController;
+    private OrderController orderController;
 
     private int permission;
 
@@ -40,6 +42,7 @@ public class Ui {
     private void showMenu() {
         int userPerm = 2;
         int adminPerm = 1;
+        this.orderController = new OrderController(userLogin.getLoggedUser());
         this.permission = userLogin.getLoggedUser().getPermission();
         this.basketController = new BasketController(userLogin.getLoggedUser());
         while (isLogged) {
@@ -93,7 +96,12 @@ public class Ui {
                     basketController.deleteProductFromBasket();
                     break;
                 case 5:
+                    orderController.makeOrder();
+                    break;
+
                 case 6:
+                    orderController.payForOrder();
+                    break;
                 case 7:
                     converter.sendProductsToTable(productService.getAllProducts(), permission);
                 case 8:
