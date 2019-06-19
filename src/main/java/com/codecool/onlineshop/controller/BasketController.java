@@ -13,39 +13,49 @@ public class BasketController {
     private BasketService basketService;
     private User user;
     private ProductService productService;
+
     public BasketController(User user) {
         this.user = user;
         basketService = new BasketService();
         //userLogin = new UserLogin();
         productService = new ProductService();
     }
-    public void addProductToBasket(){
+
+    public void addProductToBasket() {
         String productName;
         int amout;
         Print.printText("Enter name of item what do you want to add: ");
         productName = ReadInput.UserStringInput();
         Print.printText("Enter amount of item what do you want to add: ");
         amout = ReadInput.UserIntInput();
-        if(!productName.equals("") && amout > 0){
-            basketService.addProductToBasket(user,productService.getProductByName(productName),amout);
+        if (!productName.equals("") && amout > 0) {
+            Product product = productService.getProductByName(productName);
+            basketService.addProductToBasket(user, product, amout);
         }
     }
 
-    public void showUserBasket(User user){
+    public void showUserBasket(User user) {
         basketService.getUserBasket(user);
     }
 
-    public void editBasket(User user){
+    public void editBasket(User user) {
         List<Product> productList = productService.getAllProducts();
         Print.printText("Enter name of item what dou you want edit: ");
         String productName = ReadInput.UserStringInput();
         Print.printText("Enter new amount of product: ");
         int amount = ReadInput.UserIntInput();
-        for(Product product : productList){
-
-            if(product.getName().equals(productName)){
-                basketService.editBasket(user,product, productName,amount);
+        for (Product product : productList) {
+            if (product.getName().equals(productName)) {
+                basketService.editBasket(user, product, productName, amount);
             }
+        }
+    }
+
+    public void deleteProductFromBasket() {
+        Print.printText("Enter name of product to delete from basket: ");
+        String productName = ReadInput.UserStringInput();
+        if (productService.getProductByName(productName).getName().equals(productName)) {
+            basketService.deleteProductFromBasket(user, productService.getProductByName(productName));
         }
 
     }

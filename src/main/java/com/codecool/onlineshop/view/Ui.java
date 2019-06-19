@@ -90,6 +90,8 @@ public class Ui {
                     basketController.editBasket(userLogin.getLoggedUser());
                     break;
                 case 4:
+                    basketController.deleteProductFromBasket();
+                    break;
                 case 5:
                 case 6:
                 case 7:

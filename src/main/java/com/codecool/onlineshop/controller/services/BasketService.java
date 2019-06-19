@@ -21,6 +21,7 @@ public class BasketService {
 
     public void addProductToBasket(User user, Product product, int amount) {
         List<Basket> basketList = getUserBasket(user);
+        System.out.println(product.getName());
         if (basketList.size() > 0) {
             for (Basket basket : basketList) {
                 if (basket.getProduct() != product.getId()) {
@@ -65,7 +66,7 @@ public class BasketService {
     public void editBasket(User user, Product product, String productName, int amount) {
         List<Basket> basketList = getUserBasket(user);
         for (Basket basket : basketList) {
-            if (basket.getOwnerId() == user.getUserId()) {
+            if (basket.getOwnerId() == user.getUserId() && basket.getProduct() == product.getId()) {
                 if (product.getName().equals(productName)) {
                     if (amount > basket.getAmount()) {
                         if ((amount - basket.getAmount()) <= productService.getProductByName(productName).getAmount()) {
@@ -76,8 +77,8 @@ public class BasketService {
                         }
                     } else {
                         System.out.println(productService.getProductByName(productName).getAmount());
-                        if (productService.getProductByName(productName).getAmount() < amount) {
-                            productService.updateProductAmount(productName, basket.getAmount() + product.getAmount());
+                        if (productService.getProductByName(productName).getAmount() >= amount) {
+                            productService.updateProductAmount(productName, product.getAmount() + (basket.getAmount() - amount));
                             basketDao.update(new Basket(user.getUserId(), basket.getProduct(), amount));
                         } else {
                             System.out.println("Too much");
@@ -89,15 +90,18 @@ public class BasketService {
         }
     }
 
-    public void deleteProductFromBasket(User user, Product product, String productName) {
+    public void deleteProductFromBasket(User user, Product product) {
         List<Basket> basketList = getUserBasket(user);
-        for (Basket basket : basketList) {
-            if (basket.getOwnerId() == user.getUserId()) {
-                if (product.getName().equals(productName)) {
-                    productService.updateProductAmount(productName, product.getAmount() + basket.getAmount());
+        if (basketList.size() > 0) {
+            for (Basket basket : basketList) {
+                if (basket.getOwnerId() == user.getUserId()) {
+                    System.out.println("elo");
+                    productService.updateProductAmount(product.getName(), product.getAmount() + basket.getAmount());
                     basketDao.delete(product.getId());
                 }
             }
+        } else {
+            Print.printText("No data in basket !");
         }
 
     }
