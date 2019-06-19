@@ -17,7 +17,7 @@ public class UserLogin
 
     public User getLoggedUser() { return loggedUser; }
 
-    public void login(Ui ui, RootController rootController) {
+    public void login(Ui ui) {
         String userLogin;
         String userPassword;
         List<User> allUsers = userService.readAllUsers();

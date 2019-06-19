@@ -12,7 +12,6 @@ public class Ui {
     private UserLogin userLogin;
     private ConvertToArrays converter = new ConvertToArrays();
     private ProductService productService;
-    private RootController rootController = new RootController();
     private boolean isLogged = false;
 
     private int permission;
@@ -28,7 +27,6 @@ public class Ui {
     }
 
     public void start() {
-        System.out.println(isLogged);
         if (this.isLogged) {
             showMenu();
         } else {
@@ -58,7 +56,7 @@ public class Ui {
 
         switch (choice) {
             case 1:
-                userLogin.login(this, rootController);
+                userLogin.login(this);
             case 2:
                 System.exit(0);
         }
@@ -80,7 +78,6 @@ public class Ui {
         } else {
             switch (choice) {
                 case 1:
-                    System.out.println(userLogin.getLoggedUser().getUserName());
                     BasketController basketController = new BasketController(userLogin.getLoggedUser());
                     basketController.addProductToBasket();
                     break;
