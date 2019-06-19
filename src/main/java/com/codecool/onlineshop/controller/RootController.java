@@ -11,13 +11,9 @@ public class RootController {
          //categoryController.createNewCategory();
          //categoryController.editNameExistCategory();
          //productController.deactiveEmptyProduct();
-<<<<<<< HEAD
          //productController.updateProduct();
          productController.deactivateProduct();
-
-
-=======
          productController.updateProduct();
->>>>>>> 3e91eb916f07dcfe85df48b6786d7f7d2b3dc0fa
+
      }
 }

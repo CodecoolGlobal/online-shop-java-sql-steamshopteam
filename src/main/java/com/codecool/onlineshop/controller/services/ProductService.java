@@ -79,17 +79,11 @@ public class ProductService {
         for (Product product : productList) {
             if (product.getName().equals(name)) {
                 int id = product.getId();
-<<<<<<< HEAD
+
                 if (!productName.equals("")) {
                     System.out.println("jestem tu");
                     System.out.println(product.getId());
                     updateProductName(id, productName);
-=======
-                if (!productName.equals("")){
-                    System.out.println("jestem tu");
-                    System.out.println(product.getId());
-                    updateProductName(id,productName);
->>>>>>> 3e91eb916f07dcfe85df48b6786d7f7d2b3dc0fa
                 }
                 if (amount != -1) {
                     updateProductAmount(id, amount);
@@ -100,13 +94,10 @@ public class ProductService {
                 if (categoryId != -1) {
                     updateProductCategory(id, categoryId);
                 }
-<<<<<<< HEAD
+
                 if (price != 0.0) {
                     updateProductPrice(id, price);
-=======
-                if(price != 0.0){
-                    updateProductPrice(id,price);
->>>>>>> 3e91eb916f07dcfe85df48b6786d7f7d2b3dc0fa
+
                 }
 
             }
