@@ -22,42 +22,42 @@ public class ProductService {
         return productDao.read();
     }
 
-    public Product getProductByName(String productName) {
+    public Product getProductById(int productId) {
         List<Product> productList = getAllProducts();
         for (Product product : productList) {
-            if (product.getName().equals(productName)) {
+            if (product.getId() == productId) {
                 return product;
             }
         }
         return null;
     }
 
-    public void updateProductName(String productName, String newProductName) {
-        Product product = getProductByName(productName);
+    public void updateProductName(int productId, String newProductName) {
+        Product product = getProductById(productId);
         product.setName(newProductName);
         productDao.update(product);
     }
 
-    public void updateProductAmount(String productName, int newAmount) {
-        Product product = getProductByName(productName);
+    public void updateProductAmount(int productId, int newAmount) {
+        Product product = getProductById(productId);
         product.setAmount(newAmount);
         productDao.update(product);
     }
 
-    public void updateProductIsAvailable(String productName, int isAvailable) {
-        Product product = getProductByName(productName);
+    public void updateProductIsAvailable(int productId, int isAvailable) {
+        Product product = getProductById(productId);
         product.setIsAvailable(isAvailable);
         productDao.update(product);
     }
 
-    public void updateProductCategory(String productName, int productCategory) {
-        Product product = getProductByName(productName);
+    public void updateProductCategory(int productId, int productCategory) {
+        Product product = getProductById(productId);
         product.setCategoryId(productCategory);
         productDao.update(product);
     }
 
-    public void updateProductPrice(String productName, float price) {
-        Product product = getProductByName(productName);
+    public void updateProductPrice(int productId, float price) {
+        Product product = getProductById(productId);
         product.setPrice(price);
         productDao.update(product);
     }
@@ -67,7 +67,7 @@ public class ProductService {
         productList = getAllProducts();
         for (Product product : productList) {
             if (product.getAmount() == 0) {
-                updateProductIsAvailable(product.getName(), 0);
+                updateProductIsAvailable(product.getId(), 0);
             }
         }
     }
@@ -75,29 +75,41 @@ public class ProductService {
     public void updateProduct(String name, String productName, int amount, int is_available, int categoryId, float price) {
         List<Product> productList;
         productList = getAllProducts();
+
         for (Product product : productList) {
             if (product.getName().equals(name)) {
-                if (!productName.equals("")){
+                int id = product.getId();
+                if (!productName.equals("")) {
                     System.out.println("jestem tu");
-                    System.out.println(productName);
-                    updateProductName(name,productName);
+                    System.out.println(product.getId());
+                    updateProductName(id, productName);
                 }
                 if (amount != -1) {
-                    updateProductAmount(name, amount);
+                    updateProductAmount(id, amount);
                 }
                 if (is_available != -1) {
-                    updateProductIsAvailable(name, is_available);
+                    updateProductIsAvailable(id, is_available);
                 }
                 if (categoryId != -1) {
-                    updateProductCategory(name, categoryId);
+                    updateProductCategory(id, categoryId);
                 }
-                if(price != 0.0){
-                    updateProductPrice(name,price);
+                if (price != 0.0) {
+                    updateProductPrice(id, price);
                 }
 
             }
         }
+    }
+        public void deactivateProduct(int index){
+            List<Product> productList;
+            productList = getAllProducts();
 
+            for(Product product : productList){
+                if(product.getId() == index) {
+                    updateProductIsAvailable(index,0);
+                }
+            }
+        }
     }
 
-}
+

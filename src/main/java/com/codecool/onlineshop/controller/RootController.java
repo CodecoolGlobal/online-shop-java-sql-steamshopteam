@@ -1,5 +1,7 @@
 package com.codecool.onlineshop.controller;
 
+import com.codecool.onlineshop.controller.services.ProductService;
+
 public class RootController {
 
     CategoryController categoryController = new CategoryController();
@@ -8,7 +10,10 @@ public class RootController {
      public void run(){
          //categoryController.createNewCategory();
          //categoryController.editNameExistCategory();
-         productController.deactiveEmptyProduct();
-         productController.updateProduct();
+         //productController.deactiveEmptyProduct();
+         //productController.updateProduct();
+         productController.deactivateProduct();
+
+
      }
 }
