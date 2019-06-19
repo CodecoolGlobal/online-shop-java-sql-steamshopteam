@@ -1,11 +1,10 @@
 package com.codecool.onlineshop.dao;
 
 import com.codecool.onlineshop.controller.RootController;
-import com.codecool.onlineshop.view.Ui;
 
 public class MainTest {
 
-    //private static final Ui ui = new Ui();
+    //private static final UiController ui = new UiController();
 
     public static void main(String[] args)
     {
