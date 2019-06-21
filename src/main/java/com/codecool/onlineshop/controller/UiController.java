@@ -9,12 +9,11 @@ public class UiController {
 
     private UserLogin userLogin;
     private boolean isLogged = false;
+    private Options option;
 
     UiController(UserLogin userLogin) {
         this.userLogin = userLogin;
     }
-
-    private Options option = new Options();
 
     public void setLogged(boolean logged) {
         isLogged = logged;
@@ -22,6 +21,7 @@ public class UiController {
 
     public void start() {
         if (this.isLogged) {
+            this.option = new Options(userLogin.getLoggedUser());
             showMenu();
         } else {
             showLoginMenu();
@@ -30,7 +30,6 @@ public class UiController {
 
     private void showMenu() {
         int permission = userLogin.getLoggedUser().getPermission();
-        User user = userLogin.getLoggedUser();
 
         String filePath;
         filePath = (permission == 1) ? "src/resources/adminOptions.txt" : "src/resources/customerOptions.txt";
@@ -42,7 +41,7 @@ public class UiController {
 
         userChoice = ReadInput.UserStringInput();
 
-        option.run(filePath, userChoice, user);
+        option.run(filePath, userChoice);
     }
 
     private void showLoginMenu() {

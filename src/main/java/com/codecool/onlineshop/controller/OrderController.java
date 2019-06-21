@@ -4,12 +4,14 @@ import com.codecool.onlineshop.controller.services.BasketService;
 import com.codecool.onlineshop.controller.services.OrderService;
 import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.model.Basket;
+import com.codecool.onlineshop.model.ConvertToArrays;
 import com.codecool.onlineshop.model.Order;
 import com.codecool.onlineshop.model.User;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderController {
@@ -53,9 +55,15 @@ public class OrderController {
 
     }
 
-    public List showOrdersHistory(){
-
-        return orderService.readAllByUser(user.getUserId());
+    public void showOrdersHistory(){
+        List<Order> orderList = orderService.readAllByUser(user.getUserId());
+        List<String> headers = new ArrayList<>();
+        headers.add("Order Create");
+        headers.add("Pay Date");
+        headers.add("Order Status");
+        headers.add("Product name");
+        headers.add("Product amount");
+        new ConvertToArrays().sendOrdersToTable(orderList, headers);
 
     }
 
