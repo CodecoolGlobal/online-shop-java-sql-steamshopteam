@@ -84,11 +84,42 @@ public class ProductController {
     public void getSpecificProduct() {
         Print.printText("Product name");
         List<Product> products = new ArrayList<>();
+        List<String> headers = new ArrayList<>();
         products.add(new ProductService().getProductByName(ReadInput.UserStringInput()));
         if (products.get(0) == null) {
             Print.printText("No item found");
         } else {
-            new ConvertToArrays().sendProductsToTable(products);
+            new ConvertToArrays().sendProductsToTable(products, headers);
         }
+    }
+
+    public void showAllProducts() {
+        List<Product> productList = productService.getAllProducts();
+        List<String> headers = new ArrayList<>();
+        headers.add("ID");
+        headers.add("NAME");
+        headers.add("PRICE");
+        headers.add("AMOUNT");
+        headers.add("isAVAILABLE");
+        headers.add("CATEGORY");
+        new ConvertToArrays().sendProductsToTable(productList, headers);
+
+    }
+
+    public void showProductByCategory(){
+        Print.printText("Enter category name what do you want to show: ");
+        String categoryName = ReadInput.UserStringInput();
+        List<Product> productList = productService.getProductByCategory(categoryName);
+        if (productList.size() > 0) {
+            List<String> headers = new ArrayList<>();
+            headers.add("ID");
+            headers.add("NAME");
+            headers.add("PRICE");
+            headers.add("AMOUNT");
+            headers.add("isAVAILABLE");
+            headers.add("CATEGORY");
+            new ConvertToArrays().sendProductsToTable(productList, headers);
+        }
+
     }
 }

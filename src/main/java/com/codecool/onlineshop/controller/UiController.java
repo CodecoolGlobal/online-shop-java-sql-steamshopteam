@@ -8,7 +8,7 @@ public class UiController {
 
     private UserLogin userLogin;
     private boolean isLogged = false;
-    private Options option = new Options();
+    private Options option;
 
     UiController(UserLogin userLogin) {
         this.userLogin = userLogin;
@@ -20,6 +20,7 @@ public class UiController {
 
     public void start() {
         if (this.isLogged) {
+            this.option = new Options(userLogin.getLoggedUser());
             showMenu();
         } else {
             showLoginMenu();

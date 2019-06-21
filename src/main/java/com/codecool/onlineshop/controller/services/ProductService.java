@@ -1,6 +1,7 @@
 package com.codecool.onlineshop.controller.services;
 
 import com.codecool.onlineshop.dao.ProductDao;
+import com.codecool.onlineshop.model.Category;
 import com.codecool.onlineshop.model.Product;
 
 import java.util.ArrayList;
@@ -127,4 +128,20 @@ public class ProductService {
 
     }
 
+    public List getProductByCategory(String categoryName){
+        List<Product> productList = getAllProducts();
+        List<Product> productsByCategoryName = new ArrayList<>();
+        CategoryService categoryService = new CategoryService();
+        List<Category> categoryList = categoryService.readAllCategory();
+        for(Product product : productList){
+            for(Category category : categoryList){
+                if(category.getName().equals(categoryName)){
+                    if(category.getId() == product.getCategoryId()) {
+                        productsByCategoryName.add(product);
+                    }
+                }
+            }
+        }
+        return productsByCategoryName;
+    }
 }
