@@ -103,7 +103,7 @@ class Options {
 
         options.put("5", (a) -> productController.updateProduct());
 
-        options.put("6", (a) -> System.out.println("deactive product"));
+        options.put("6", (a) -> productController.deactivateProductOf());
 
         options.put("7", (a) -> productController.setDiscount());
 
