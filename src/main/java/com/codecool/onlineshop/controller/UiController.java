@@ -36,7 +36,7 @@ public class UiController {
 
             String userChoice;
 
-            System.out.println("Your choice: ");
+            System.out.println("\nYour choice: ");
 
             userChoice = ReadInput.UserStringInput();
 

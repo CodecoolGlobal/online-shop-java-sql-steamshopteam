@@ -7,3 +7,4 @@
 7. Create discount
 8. Show orders list
 9. Show orders feedbacks
+10. Logout

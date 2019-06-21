@@ -50,7 +50,7 @@ public class ConvertToArrays {
     public void sendBasketToTable(List<Basket> incomingData) {
         List<List<String>> productsList = new ArrayList<>();
         List<String> headers;
-        headers = Arrays.asList("No.", "Item","Amount", "Price");
+        headers = Arrays.asList("No.", "Item","Amount", "Price", "Total");
 
 
         int counter = 0;
@@ -63,6 +63,8 @@ public class ConvertToArrays {
             productsList.get(counter).add(String.valueOf(productService.getProductById(basket.getProduct()).getName()));
             productsList.get(counter).add(String.valueOf(basket.getAmount()));
             productsList.get(counter).add(String.valueOf(productService.getProductById(basket.getProduct()).getPrice()));
+            productsList.get(counter).add(String.valueOf(
+                    productService.getProductById(basket.getProduct()).getPrice() * basket.getAmount()));
             totalPrice += (productService.getProductById(basket.getProduct()).getPrice() * basket.getAmount());
             counter += 1;
         }
