@@ -56,13 +56,7 @@ public class OrderController {
 
     public void showOrdersHistory(){
         List<Order> orderList = orderService.readAllByUser(user.getUserId());
-        List<String> headers = new ArrayList<>();
-        headers.add("Order Create");
-        headers.add("Pay Date");
-        headers.add("Order Status");
-        headers.add("Product name");
-        headers.add("Product amount");
-        new ConvertToArrays().sendOrdersToTable(orderList, headers);
+        new ConvertToArrays().sendOrdersToTable(orderList);
 
     }
 

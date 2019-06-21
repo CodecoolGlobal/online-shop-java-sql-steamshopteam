@@ -15,17 +15,19 @@ public class BasketController {
     private BasketService basketService;
     private User user;
     private ProductService productService;
+    private ProductController productController;
 
     public BasketController(User user) {
         this.user = user;
-        basketService = new BasketService();
-        //userLogin = new UserLogin();
-        productService = new ProductService();
+        this.basketService = new BasketService();
+        this.productService = new ProductService();
+        this.productController = new ProductController();
     }
 
     public void addProductToBasket() {
         String productName;
         int amout;
+        productController.showAllProducts();
         Print.printText("Enter name of item what do you want to add: ");
         productName = ReadInput.UserStringInput();
         Print.printText("Enter amount of item what do you want to add: ");
@@ -43,19 +45,23 @@ public class BasketController {
 
 
     public void editBasket(User user) {
+        showUserBasket(user);
         List<Product> productList = productService.getAllProducts();
         Print.printText("Enter name of item what dou you want edit: ");
         String productName = ReadInput.UserStringInput();
         Print.printText("Enter new amount of product: ");
         int amount = ReadInput.UserIntInput();
-        for (Product product : productList) {
-            if (product.getName().equals(productName)) {
-                basketService.editBasket(user, product, productName, amount);
+        if(amount > 0) {
+            for (Product product : productList) {
+                if (product.getName().equals(productName)) {
+                    basketService.editBasket(user, product, productName, amount);
+                }
             }
         }
     }
 
     public void deleteProductFromBasket() {
+        showUserBasket(user);
         Print.printText("Enter name of product to delete from basket: ");
         String productName = ReadInput.UserStringInput();
         if (productService.getProductByName(productName).getName().equals(productName)) {
