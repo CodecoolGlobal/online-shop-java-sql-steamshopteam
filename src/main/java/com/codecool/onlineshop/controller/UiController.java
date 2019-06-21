@@ -29,18 +29,19 @@ public class UiController {
 
     private void showMenu() {
         int permission = userLogin.getLoggedUser().getPermission();
+        while(isLogged) {
+            String filePath;
+            filePath = (permission == 1) ? "src/resources/adminOptions.txt" : "src/resources/customerOptions.txt";
+            menuIterator(filePath);
 
-        String filePath;
-        filePath = (permission == 1) ? "src/resources/adminOptions.txt" : "src/resources/customerOptions.txt";
-        menuIterator(filePath);
+            String userChoice;
 
-        String userChoice;
+            System.out.println("Your choice: ");
 
-        System.out.println("Your choice: ");
+            userChoice = ReadInput.UserStringInput();
 
-        userChoice = ReadInput.UserStringInput();
-
-        option.run(filePath, userChoice);
+            option.run(filePath, userChoice);
+        }
     }
 
     private void showLoginMenu() {
