@@ -47,8 +47,8 @@ public class OrderService {
         return filteredOrderList;
     }
 
-    public void create(String orderCreateDate, String payDate, int idOwner, int idStatus, int idProduct){
-        orderDao.create(new Order(orderCreateDate,payDate,idOwner,idStatus,idProduct));
+    public void create(String orderCreateDate, String payDate, int idOwner, int idStatus, int idProduct, int amount){
+        orderDao.create(new Order(orderCreateDate,payDate,idOwner,idStatus,idProduct, amount));
     }
 
     public void payForOrder(Order order, String payDate){
