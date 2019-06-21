@@ -4,7 +4,9 @@ import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.controller.services.UserService;
 import com.codecool.onlineshop.view.Viewer;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ConvertToArrays {
@@ -16,12 +18,13 @@ public class ConvertToArrays {
     public void sendProductsToTable(List<Product> incomingData) {
         List<List<String>> productsList = new ArrayList<>();
         List<String> headers = new ArrayList<>();
-        headers.add("ID");
+     /*   headers.add("ID");
         headers.add("NAME");
         headers.add("PRICE");
         headers.add("AMOUNT");
         headers.add("isAVAILABLE");
-        headers.add("CATEGORY");
+        headers.add("CATEGORY");*/
+        headers = Arrays.asList("ID","NAME","PRICE","AMOUNT","isAVAILABLE","CATEGORY");
 
         int counter = 0;
 
