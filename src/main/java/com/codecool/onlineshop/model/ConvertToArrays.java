@@ -1,5 +1,7 @@
 package com.codecool.onlineshop.model;
 
+import com.codecool.onlineshop.controller.CategoryController;
+import com.codecool.onlineshop.controller.services.CategoryService;
 import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.controller.services.UserService;
 import com.codecool.onlineshop.view.Viewer;
@@ -13,6 +15,7 @@ public class ConvertToArrays {
     private Viewer viewer = new Viewer();
     private UserService userService = new UserService();
     private ProductService productService = new ProductService();
+    private CategoryService categoryService = new CategoryService();
 
     public void sendProductsToTable(List<Product> incomingData) {
         List<List<String>> productsList = new ArrayList<>();
@@ -59,8 +62,11 @@ public class ConvertToArrays {
         viewer.displayTable(productsList, headers);
     }
 
-    public void sendOrdersToTable(List<Order> incomingData, List<String> header){
+    public void sendOrdersToTable(List<Order> incomingData){
         List<List<String>> orderList = new ArrayList<>();
+        List<String> headers;
+        headers = Arrays.asList("Order Create","Pay Date","Order Status", "Product Name", "Product Amount");
+
 
         int counter = 0;
 
@@ -69,13 +75,13 @@ public class ConvertToArrays {
 
             orderList.get(counter).add(String.valueOf(order.getOrderDate()));
             orderList.get(counter).add(String.valueOf(order.getPayDate()));
-            orderList.get(counter).add(String.valueOf(order.getId_status()));
+            orderList.get(counter).add(String.valueOf(categoryService.readOf(order.getId_status()).getName()));
             orderList.get(counter).add(String.valueOf(productService.getProductById(order.getId_product()).getName()));
             orderList.get(counter).add(String.valueOf(order.getAmount()));
             counter += 1;
         }
 
-        viewer.displayTable(orderList, header);
+        viewer.displayTable(orderList, headers);
     }
 
 }
