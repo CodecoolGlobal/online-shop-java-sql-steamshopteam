@@ -38,11 +38,7 @@ public class BasketController {
 
     public void showUserBasket(User user) {
         List<Basket> basketList = basketService.getUserBasket(user);
-        List<String> headers = new ArrayList<>();
-        headers.add("Owner");
-        headers.add("amount");
-        headers.add("Prod id");
-        new ConvertToArrays().sendBasketToTable(basketList, headers);
+        new ConvertToArrays().sendBasketToTable(basketList);
     }
 
 
@@ -68,11 +64,4 @@ public class BasketController {
 
     }
 
-    public void makeOrder(){
-        new OrderController(user).makeOrder();
-    }
-
-    public void payForOrder(){
-        new OrderController(user).payForOrder();
-    }
 }

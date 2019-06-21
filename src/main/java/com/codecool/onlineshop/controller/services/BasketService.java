@@ -24,26 +24,25 @@ public class BasketService {
         if (basketList.size() > 0) {
             for (Basket basket : basketList) {
                 if (basket.getProduct() != product.getId()) {
-                    if (productService.getProductByName(product.getName()).getAmount() >= amount) {
-                        productService.updateProductAmount(product.getId(), product.getAmount() - amount);
-                        basketDao.create(new Basket(user.getUserId(), product.getId(), amount));
-                    } else {
-                        Print.printText("Sorry but we haven`t got enough amount of this product!");
-                    }
+                    checkAmount(user, product, amount);
                 } else {
                     Print.printText("You already have this product in your basket!");
                 }
             }
         } else {
-            if (productService.getProductByName(product.getName()).getAmount() >= amount) {
-                productService.updateProductAmount(product.getId(), product.getAmount() - amount);
-                basketDao.create(new Basket(user.getUserId(), product.getId(), amount));
-            } else {
-                Print.printText("Sorry but we haven`t got enough amount of this product!");
-            }
+            checkAmount(user, product, amount);
         }
 
 
+    }
+
+    private void checkAmount(User user, Product product, int amount) {
+        if (productService.getProductByName(product.getName()).getAmount() >= amount) {
+            productService.updateProductAmount(product.getId(), product.getAmount() - amount);
+            basketDao.create(new Basket(user.getUserId(), product.getId(), amount));
+        } else {
+            Print.printText("Sorry but we haven`t got enough amount of this product!");
+        }
     }
 
     public List showAllBaskets() {
@@ -51,7 +50,6 @@ public class BasketService {
     }
 
     public List getUserBasket(User user) {
-        //todo
         List<Basket> basketList = showAllBaskets();
         List<Basket> userBasket = new ArrayList<>();
         for (Basket basket : basketList) {
@@ -104,4 +102,3 @@ public class BasketService {
 
     }
 }
-

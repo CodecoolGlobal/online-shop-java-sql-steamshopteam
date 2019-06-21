@@ -16,7 +16,7 @@ public class ConvertToArrays {
 
     public void sendProductsToTable(List<Product> incomingData) {
         List<List<String>> productsList = new ArrayList<>();
-        List<String> headers = new ArrayList<>();
+        List<String> headers;
 
         headers = Arrays.asList("ID","NAME","PRICE","AMOUNT","isAVAILABLE","CATEGORY");
 
@@ -38,8 +38,11 @@ public class ConvertToArrays {
         viewer.displayTable(productsList, headers);
     }
 
-    public void sendBasketToTable(List<Basket> incomingData, List<String> header) {
+    public void sendBasketToTable(List<Basket> incomingData) {
         List<List<String>> productsList = new ArrayList<>();
+        List<String> headers;
+        headers = Arrays.asList("Owner","Amount","Prod id");
+
 
         int counter = 0;
 
@@ -53,7 +56,7 @@ public class ConvertToArrays {
             counter += 1;
         }
 
-        viewer.displayTable(productsList, header);
+        viewer.displayTable(productsList, headers);
     }
 
     public void sendOrdersToTable(List<Order> incomingData, List<String> header){
