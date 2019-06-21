@@ -1,5 +1,6 @@
 package com.codecool.onlineshop.controller;
 
+import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.model.UserLogin;
 
 import java.io.IOException;
@@ -8,11 +9,12 @@ public class UiController {
 
     private UserLogin userLogin;
     private boolean isLogged = false;
-    private Options option = new Options();
 
     UiController(UserLogin userLogin) {
         this.userLogin = userLogin;
     }
+
+    private Options option = new Options();
 
     public void setLogged(boolean logged) {
         isLogged = logged;
@@ -28,14 +30,19 @@ public class UiController {
 
     private void showMenu() {
         int permission = userLogin.getLoggedUser().getPermission();
+        User user = userLogin.getLoggedUser();
 
         String filePath;
         filePath = (permission == 1) ? "src/resources/adminOptions.txt" : "src/resources/customerOptions.txt";
         menuIterator(filePath);
 
-        String userChoice = ReadInput.UserStringInput();
+        String userChoice;
 
-        option.run(filePath, userChoice);
+        System.out.println("Your choice: ");
+
+        userChoice = ReadInput.UserStringInput();
+
+        option.run(filePath, userChoice, user);
     }
 
     private void showLoginMenu() {
