@@ -29,7 +29,7 @@ public class RootController {
         //categoryController.editNameExistCategory();
         //productController.deactiveEmptyProduct();
         //productController.setDiscount();
-        productController.getSpecificProduct();
+        productController.getProductByCategory();
 
 
     }

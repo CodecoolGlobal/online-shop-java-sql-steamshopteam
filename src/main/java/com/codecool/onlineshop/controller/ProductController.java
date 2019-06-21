@@ -91,4 +91,21 @@ public class ProductController {
             new ConvertToArrays().sendProductsToTable(products);
         }
     }
+
+    public void getProductByCategory() {
+        Print.printText("Product category");
+        List<Product> products;
+
+        products = new ProductService().getProductbyCategory(ReadInput.UserStringInput());
+        System.out.println(products);
+        if (products.size() == 0) {
+            Print.printText("No item found");
+        } else {
+            new ConvertToArrays().sendProductsToTable(products);
+        }
+
+
+    }
+
+
 }
