@@ -30,6 +30,15 @@ public class UserService {
         }
         return null;
     }
+    public User getPlayerById(int id){
+        List<User> userList = userDao.read();
+        for (User user : userList) {
+            if(user.getUserId() == id){
+                return user;
+            }
+        }
+        return null;
+    }
 
     public void updateUserName(String userName, String newUserName){
         User user = readOf(userName);

@@ -40,7 +40,8 @@ public class OrderDao implements Dao<Order> {
                         resultSet.getString("pay_date"),
                         resultSet.getInt("id_owner"),
                         resultSet.getInt("id_status"),
-                        resultSet.getInt("id_product"));
+                        resultSet.getInt("id_product"),
+                        resultSet.getInt("amount"));
 
                 orderList.add(order);
             }

@@ -9,25 +9,29 @@ public class Order {
     private int id_owner;
     private int id_status;
     private int id_product;
+    private int amount;
 
     public Order() {
     }
 
-    public Order(int id_order, String orderDate, String payDate, int id_owner, int id_status, int id_product) {
+    public Order(int id_order, String orderDate, String payDate, int id_owner, int id_status, int id_product, int amount) {
         this.id_order = id_order;
         this.orderDate = orderDate;
         this.payDate = payDate;
         this.id_owner = id_owner;
         this.id_status = id_status;
         this.id_product = id_product;
+        this.amount = amount;
     }
 
-    public Order(String orderDate, String payDate, int id_owner, int id_status, int id_product) {
+
+    public Order(String orderDate, String payDate, int id_owner, int id_status, int id_product, int amount) {
         this.orderDate = orderDate;
         this.payDate = payDate;
         this.id_owner = id_owner;
         this.id_status = id_status;
         this.id_product = id_product;
+        this.amount = amount;
     }
 
     public int getId_order() {
@@ -56,6 +60,10 @@ public class Order {
 
     public void setPayDate(String payDate) {
         this.payDate = payDate;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 
     @Override

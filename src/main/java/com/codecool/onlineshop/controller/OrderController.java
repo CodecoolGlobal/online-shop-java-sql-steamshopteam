@@ -6,11 +6,10 @@ import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.model.Basket;
 import com.codecool.onlineshop.model.Order;
 import com.codecool.onlineshop.model.User;
-import com.codecool.onlineshop.view.Print;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+
 import java.util.List;
 
 public class OrderController {
@@ -30,27 +29,33 @@ public class OrderController {
         this.localDate = LocalDate.now();
     }
 
-    public void makeOrder(){
+    public void makeOrder() {
         List<Basket> basketList = new BasketService().getUserBasket(user);
-        for (Basket basket : basketList){
+        for (Basket basket : basketList) {
             Order order = new Order(dateTimeFormatter.format(localDate), "", user.getUserId(), 1,
-                    basket.getProduct());
+                    basket.getProduct(), basket.getAmount());
             orderService.create(order.getOrderDate(), order.getPayDate(), order.getId_owner(), order.getId_status(),
-                    order.getId_product());
+                    order.getId_product(), order.getAmount());
         }
 
 
     }
 
-    public void payForOrder(){
+    public void payForOrder() {
         List<Order> orderList = new OrderService().readAllByUser(user.getUserId());
-        for (Order order : orderList){
-            if(order.getId_owner() == user.getUserId()){
+        for (Order order : orderList) {
+            if (order.getId_owner() == user.getUserId()) {
                 orderService.payForOrder(order, dateTimeFormatter.format(localDate));
             }
 
         }
 
+
+    }
+
+    public List showOrdersHistory(){
+
+        return orderService.readAllByUser(user.getUserId());
 
     }
 
