@@ -4,6 +4,7 @@ import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.controller.services.UserService;
 import com.codecool.onlineshop.view.Viewer;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,22 +42,26 @@ public class ConvertToArrays {
     public void sendBasketToTable(List<Basket> incomingData) {
         List<List<String>> productsList = new ArrayList<>();
         List<String> headers;
-        headers = Arrays.asList("Owner","Amount","Prod id");
+        headers = Arrays.asList("No.", "Item","Amount", "Price");
 
 
         int counter = 0;
+        int totalPrice = 0;
 
         for (Basket basket : incomingData) {
             productsList.add(new ArrayList<>());
 
-            productsList.get(counter).add(String.valueOf(userService.getPlayerById(basket.getOwnerId()).getUserName()));
-            productsList.get(counter).add(String.valueOf(basket.getAmount()));
+            productsList.get(counter).add(String.valueOf(counter + 1));
             productsList.get(counter).add(String.valueOf(productService.getProductById(basket.getProduct()).getName()));
-
+            productsList.get(counter).add(String.valueOf(basket.getAmount()));
+            productsList.get(counter).add(String.valueOf(productService.getProductById(basket.getProduct()).getPrice()));
+            totalPrice += (productService.getProductById(basket.getProduct()).getPrice() * basket.getAmount());
             counter += 1;
         }
 
         viewer.displayTable(productsList, headers);
+
+        System.out.println("Your total amount to pay is: " + totalPrice);
     }
 
     public void sendOrdersToTable(List<Order> incomingData, List<String> header){
