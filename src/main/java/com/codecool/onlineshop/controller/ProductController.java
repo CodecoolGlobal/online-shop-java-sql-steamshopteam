@@ -1,9 +1,11 @@
 package com.codecool.onlineshop.controller;
 
 import com.codecool.onlineshop.controller.services.ProductService;
+import com.codecool.onlineshop.model.ConvertToArrays;
 import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.view.Print;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductController {
@@ -69,13 +71,24 @@ public class ProductController {
 
     }
 
-    public void setDiscount(){
+    public void setDiscount() {
         Print.printText("Id product: ");
         int id = ReadInput.UserIntInput();
         Print.printText("Discount( % ): ");
         int disc = ReadInput.UserIntInput();
 
-        new ProductService().discountProduct(id,disc);
+        new ProductService().discountProduct(id, disc);
 
+    }
+
+    public void getSpecificProduct() {
+        Print.printText("Product name");
+        List<Product> products = new ArrayList<>();
+        products.add(new ProductService().getProductByName(ReadInput.UserStringInput()));
+        if (products.get(0) == null) {
+            Print.printText("No item found");
+        } else {
+            new ConvertToArrays().sendProductsToTable(products);
+        }
     }
 }

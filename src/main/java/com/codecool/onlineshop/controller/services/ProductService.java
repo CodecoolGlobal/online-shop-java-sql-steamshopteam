@@ -3,6 +3,7 @@ package com.codecool.onlineshop.controller.services;
 import com.codecool.onlineshop.dao.ProductDao;
 import com.codecool.onlineshop.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService {
@@ -34,11 +35,17 @@ public class ProductService {
     public Product getProductByName(String productName) {
         List<Product> productList = getAllProducts();
         for (Product product : productList) {
-            if (product.getName() == productName) {
+            if (product.getName().equals(productName)) {
                 return product;
             }
         }
         return null;
+    }
+
+    private List<Product> getProducts() {
+        List<Product> productList;
+        productList = getAllProducts();
+        return productList;
     }
 
 
@@ -73,8 +80,7 @@ public class ProductService {
     }
 
     public void deactivateProductWhenQuantityEquals0() {
-        List<Product> productList;
-        productList = getAllProducts();
+        List<Product> productList = getProducts();
         for (Product product : productList) {
             if (product.getAmount() == 0) {
                 updateProductIsAvailable(product.getId(), 0);
@@ -83,8 +89,7 @@ public class ProductService {
     }
 
     public void updateProduct(String name, String productName, int amount, int is_available, int categoryId, float price) {
-        List<Product> productList;
-        productList = getAllProducts();
+        List<Product> productList = getProducts();
 
         for (Product product : productList) {
             if (product.getName().equals(name)) {
@@ -111,8 +116,7 @@ public class ProductService {
     }
 
     public void discountProduct(int index, int discount) {
-        List<Product> productList;
-        productList = getAllProducts();
+        List<Product> productList = getProducts();
         float dis = (float) discount / 100;
         for (Product product : productList) {
             if (product.getId() == index) {

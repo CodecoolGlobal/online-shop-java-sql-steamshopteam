@@ -28,7 +28,8 @@ public class RootController {
         //categoryController.createNewCategory();
         //categoryController.editNameExistCategory();
         //productController.deactiveEmptyProduct();
-        productController.setDiscount();
+        //productController.setDiscount();
+        productController.getSpecificProduct();
 
 
     }
