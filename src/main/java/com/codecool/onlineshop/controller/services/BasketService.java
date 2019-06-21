@@ -50,7 +50,6 @@ public class BasketService {
     }
 
     public List getUserBasket(User user) {
-        //todo
         List<Basket> basketList = showAllBaskets();
         List<Basket> userBasket = new ArrayList<>();
         for (Basket basket : basketList) {
@@ -103,4 +102,3 @@ public class BasketService {
 
     }
 }
-

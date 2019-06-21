@@ -5,6 +5,7 @@ import com.codecool.onlineshop.model.ConvertToArrays;
 import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.model.User;
 
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,14 +17,12 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 class Options {
-    private ConvertToArrays converter = new ConvertToArrays();
-    private ProductService productService = new ProductService();
+
     private BasketController basketController;
     private OrderController orderController;
     private ProductController productController;
     private CategoryController categoryController;
 
-    private Product product = productService.getProductById(3);
 
     public Options(User user) {
         this.user = user;
