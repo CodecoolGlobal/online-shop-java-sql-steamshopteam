@@ -68,4 +68,14 @@ public class ProductController {
         new ProductService().updateProduct(name, productName, amount, isAvailable, categoryId, price);
 
     }
+
+    public void setDiscount(){
+        Print.printText("Id product: ");
+        int id = ReadInput.UserIntInput();
+        Print.printText("Discount( % ): ");
+        int disc = ReadInput.UserIntInput();
+
+        new ProductService().discountProduct(id,disc);
+
+    }
 }

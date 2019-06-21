@@ -3,7 +3,6 @@ package com.codecool.onlineshop.controller.services;
 import com.codecool.onlineshop.dao.ProductDao;
 import com.codecool.onlineshop.model.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService {
@@ -41,7 +40,6 @@ public class ProductService {
         }
         return null;
     }
-
 
 
     public void updateProductName(int productId, String newProductName) {
@@ -91,10 +89,8 @@ public class ProductService {
         for (Product product : productList) {
             if (product.getName().equals(name)) {
                 int id = product.getId();
-                if (!productName.equals("")){
-                    System.out.println("jestem tu");
-                    System.out.println(product.getId());
-                    updateProductName(id,productName);
+                if (!productName.equals("")) {
+                    updateProductName(id, productName);
                 }
                 if (amount != -1) {
                     updateProductAmount(id, amount);
@@ -105,12 +101,25 @@ public class ProductService {
                 if (categoryId != -1) {
                     updateProductCategory(id, categoryId);
                 }
-                if(price != 0.0){
-                    updateProductPrice(id,price);
+                if (price != 0.0) {
+                    updateProductPrice(id, price);
                 }
 
             }
         }
+
+    }
+
+    public void discountProduct(int index, int discount) {
+        List<Product> productList;
+        productList = getAllProducts();
+        float dis = (float) discount / 100;
+        for (Product product : productList) {
+            if (product.getId() == index) {
+                updateProductPrice(product.getId(), (product.getPrice() - (product.getPrice() * dis)));
+            }
+        }
+
 
     }
 
