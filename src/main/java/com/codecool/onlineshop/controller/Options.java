@@ -1,11 +1,8 @@
 package com.codecool.onlineshop.controller;
 
-import com.codecool.onlineshop.controller.services.BasketService;
 import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.model.ConvertToArrays;
 import com.codecool.onlineshop.model.Product;
-import com.codecool.onlineshop.model.User;
-import com.codecool.onlineshop.model.UserLogin;
 import com.codecool.onlineshop.model.User;
 
 import java.io.BufferedReader;
@@ -116,10 +113,6 @@ class Options {
             e.printStackTrace();
         }
 
-        if (userChoice != null)
-            getOptions().get(userChoice).accept(null);
-        else
-            System.out.println("Error: UserChoice is null");
         if(user.getPermission() != 1)
             getOptions().get(userChoice).accept(null);
         else

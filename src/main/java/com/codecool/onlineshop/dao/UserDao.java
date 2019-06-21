@@ -1,7 +1,7 @@
 package com.codecool.onlineshop.dao;
 
-import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.dao.interfaces.Dao;
+import com.codecool.onlineshop.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

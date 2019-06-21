@@ -1,9 +1,5 @@
 package com.codecool.onlineshop.model;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class Basket {
     private int ownerId;
     private int productId;

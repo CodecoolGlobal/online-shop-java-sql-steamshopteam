@@ -1,7 +1,6 @@
 package com.codecool.onlineshop.controller.services;
 
 import com.codecool.onlineshop.dao.OrderDao;
-import com.codecool.onlineshop.model.Basket;
 import com.codecool.onlineshop.model.Order;
 
 import java.util.ArrayList;

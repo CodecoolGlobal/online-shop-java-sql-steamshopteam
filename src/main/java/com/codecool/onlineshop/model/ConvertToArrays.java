@@ -1,10 +1,10 @@
 package com.codecool.onlineshop.model;
 
+import com.codecool.onlineshop.controller.services.CategoryService;
 import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.controller.services.UserService;
 import com.codecool.onlineshop.view.Viewer;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,13 +17,10 @@ public class ConvertToArrays {
 
     public void sendProductsToTable(List<Product> incomingData) {
         List<List<String>> productsList = new ArrayList<>();
-        List<String> headers = new ArrayList<>();
-     /*   headers.add("ID");
-        headers.add("NAME");
-        headers.add("PRICE");
-        headers.add("AMOUNT");
-        headers.add("isAVAILABLE");
-        headers.add("CATEGORY");*/
+        List<Category> categoryList = new ArrayList<>();
+        categoryList = new CategoryService().readAllCategory();
+        List<String> headers;
+
         headers = Arrays.asList("ID","NAME","PRICE","AMOUNT","isAVAILABLE","CATEGORY");
 
         int counter = 0;
@@ -35,8 +32,12 @@ public class ConvertToArrays {
             productsList.get(counter).add(product.getName());
             productsList.get(counter).add(String.valueOf(product.getPrice()));
             productsList.get(counter).add(String.valueOf(product.getAmount()));
-            productsList.get(counter).add(String.valueOf(product.getIsAvailable()));
-            productsList.get(counter).add(String.valueOf(product.getCategoryId()));
+            productsList.get(counter).add(product.getIsAvailable() == 1 ? "available": "unavailable");
+            for(Category category : categoryList)
+                if(category.getId() == product.getCategoryId()) {
+                    productsList.get(counter).add(String.valueOf(category.getName()));
+                    break;
+                }
 
             counter += 1;
         }

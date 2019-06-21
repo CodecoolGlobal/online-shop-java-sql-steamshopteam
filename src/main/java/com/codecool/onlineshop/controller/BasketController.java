@@ -2,7 +2,10 @@ package com.codecool.onlineshop.controller;
 
 import com.codecool.onlineshop.controller.services.BasketService;
 import com.codecool.onlineshop.controller.services.ProductService;
-import com.codecool.onlineshop.model.*;
+import com.codecool.onlineshop.model.Basket;
+import com.codecool.onlineshop.model.ConvertToArrays;
+import com.codecool.onlineshop.model.Product;
+import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.view.Print;
 
 import java.util.ArrayList;

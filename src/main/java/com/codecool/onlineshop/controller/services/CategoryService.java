@@ -3,7 +3,6 @@ package com.codecool.onlineshop.controller.services;
 import com.codecool.onlineshop.dao.CategoryDao;
 import com.codecool.onlineshop.model.Category;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryService {

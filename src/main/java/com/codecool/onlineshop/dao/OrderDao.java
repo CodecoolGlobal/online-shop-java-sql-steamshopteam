@@ -1,7 +1,6 @@
 package com.codecool.onlineshop.dao;
 
 import com.codecool.onlineshop.dao.interfaces.Dao;
-import com.codecool.onlineshop.model.Category;
 import com.codecool.onlineshop.model.Order;
 
 import java.sql.ResultSet;
