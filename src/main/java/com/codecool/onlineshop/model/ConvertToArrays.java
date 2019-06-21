@@ -1,5 +1,7 @@
 package com.codecool.onlineshop.model;
 
+import com.codecool.onlineshop.controller.CategoryController;
+import com.codecool.onlineshop.controller.services.CategoryService;
 import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.controller.services.UserService;
 import com.codecool.onlineshop.view.Viewer;
@@ -12,6 +14,8 @@ public class ConvertToArrays {
     private Viewer viewer = new Viewer();
 
     public void sendProductsToTable(List<Product> incomingData) {
+        List<Category> categoryList = new ArrayList<>();
+        categoryList = new CategoryService().readAllCategory();
         List<List<String>> productsList = new ArrayList<>();
 
         int counter = 0;
@@ -23,8 +27,12 @@ public class ConvertToArrays {
             productsList.get(counter).add(product.getName());
             productsList.get(counter).add(String.valueOf(product.getPrice()));
             productsList.get(counter).add(String.valueOf(product.getAmount()));
-            productsList.get(counter).add(String.valueOf(product.getIsAvailable()));
-            productsList.get(counter).add(String.valueOf(product.getCategoryId()));
+            productsList.get(counter).add(product.getIsAvailable() == 1 ? "available" : "unavailable");
+            for(Category category : categoryList)
+                if(product.getCategoryId() == category.getId()) {
+                    productsList.get(counter).add(String.valueOf(category.getName()));
+                    break;
+                }
 
             counter += 1;
         }

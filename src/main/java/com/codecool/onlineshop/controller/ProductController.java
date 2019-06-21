@@ -97,7 +97,6 @@ public class ProductController {
         List<Product> products;
 
         products = new ProductService().getProductbyCategory(ReadInput.UserStringInput());
-        System.out.println(products);
         if (products.size() == 0) {
             Print.printText("No item found");
         } else {
