@@ -119,5 +119,11 @@ public class ProductController {
 
     }
 
+    public void deactivateProductOf(){
+        Print.printText("Id product to deactivate");
+        new ProductService().deactivateProductOf(ReadInput.UserIntInput());
+
+    }
+
 
 }

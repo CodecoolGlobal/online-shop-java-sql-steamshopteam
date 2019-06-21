@@ -160,5 +160,16 @@ public class ProductService {
                 filteredProduct.add(product);
         }
         return filteredProduct;
+
+    }
+
+    public void deactivateProductOf(int index){
+        List<Product> productList = getProducts();
+
+        for(Product product : productList)
+            if(product.getId() == index) {
+                updateProductIsAvailable(product.getId(),0);
+            }
+
     }
 }

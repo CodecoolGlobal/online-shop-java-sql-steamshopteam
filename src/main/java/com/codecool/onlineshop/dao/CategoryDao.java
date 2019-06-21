@@ -19,8 +19,8 @@ public class CategoryDao implements Dao<Category> {
 
     @Override
     public void create(Category obj) {
-        sqlImplementation.doQuery(" INSERT INTO category(name, is_available) VALUES('" + obj.getName() +
-                "', '");
+        sqlImplementation.doQuery(" INSERT INTO category(name) VALUES('" + obj.getName() +
+                "')");
         sqlImplementation.closeQuery();
 
     }
