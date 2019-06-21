@@ -1,6 +1,5 @@
 package com.codecool.onlineshop.controller;
 
-import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.model.UserLogin;
 
 import java.io.IOException;

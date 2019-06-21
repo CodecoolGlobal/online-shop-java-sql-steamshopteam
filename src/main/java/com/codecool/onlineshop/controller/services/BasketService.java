@@ -6,7 +6,6 @@ import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.view.Print;
 
-
 import java.util.ArrayList;
 import java.util.List;
 

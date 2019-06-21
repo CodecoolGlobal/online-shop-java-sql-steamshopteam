@@ -1,7 +1,5 @@
 package com.codecool.onlineshop.model;
 
-import java.util.Date;
-
 public class Order {
     private int id_order;
     private String orderDate;

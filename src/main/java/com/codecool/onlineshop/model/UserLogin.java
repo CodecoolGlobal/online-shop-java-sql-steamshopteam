@@ -1,8 +1,8 @@
 package com.codecool.onlineshop.model;
 
 import com.codecool.onlineshop.controller.ReadInput;
-import com.codecool.onlineshop.controller.services.UserService;
 import com.codecool.onlineshop.controller.UiController;
+import com.codecool.onlineshop.controller.services.UserService;
 
 import java.util.List;
 
