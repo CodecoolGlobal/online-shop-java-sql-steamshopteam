@@ -3,9 +3,7 @@ package com.codecool.onlineshop.controller;
 import com.codecool.onlineshop.controller.services.BasketService;
 import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.model.ConvertToArrays;
-import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.model.User;
-import com.codecool.onlineshop.model.UserLogin;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -21,8 +19,6 @@ class Options {
     private ConvertToArrays converter = new ConvertToArrays();
     private ProductService productService = new ProductService();
     private BasketService basketService = new BasketService();
-
-    private Product product = productService.getProductById(3);
 
     public User getUser() {
         return user;
@@ -52,17 +48,25 @@ class Options {
         return options;
     }
 
-    private Map<String, Consumer<Void>> getOptions()
+    private Map<String, Consumer<Void>> getOptionsCustomer()
     {
         Map<String, Consumer<Void>> options = new HashMap<>();
-
-        options.put("1", (a) -> basketService.addProductToBasket(getUser(), product, 0));
-
-        options.put("2", (a) -> System.out.println("showing basket"));
-
-        options.put("3. Edit basket", (a) -> System.out.println("edit basket"));
-
-        options.put("4. Delete from basket", (a) -> System.out.println("delete from basket"));
+        //add to basket
+        options.put("1", (a) -> {
+            converter.sendProductsToTable(productService.getAllProducts());
+            basketService.addProductToBasket(getUser(), productService.getProductById(ReadInput.UserIntInput()),
+                    ReadInput.UserIntInput());
+        });
+        //show basket
+        options.put("2", (a) -> converter.sendBasketToTable(basketService.showAllBaskets()));
+        //edit basket
+        options.put("3", (a) -> basketService.editBasket(user,
+                productService.getProductByName(ReadInput.UserStringInput()),
+                ReadInput.UserStringInput(),
+                ReadInput.UserIntInput()));
+        //delete basket
+        options.put("4", (a) -> basketService.deleteProductFromBasket(user,
+                productService.getProductByName(ReadInput.UserStringInput())));
 
         options.put("5. Place order", (a) -> System.out.println("placing order"));
 
@@ -83,6 +87,29 @@ class Options {
         return options;
     }
 
+    private Map<String, Consumer<Void>> getOptionsAdmin()
+    {
+        Map<String, Consumer<Void>> options = new HashMap<>();
+
+        options.put("1", (a) -> System.out.println("admin"));
+
+        options.put("2", (a) -> System.out.println("showing basket"));
+
+        options.put("3", (a) -> System.out.println("showing basket"));
+
+        options.put("4", (a) -> System.out.println("showing basket"));
+
+        options.put("5", (a) -> System.out.println("showing basket"));
+
+        options.put("6", (a) -> System.out.println("showing basket"));
+
+        options.put("7", (a) -> System.out.println("showing basket"));
+
+        options.put("8", (a) -> System.out.println("showing basket"));
+
+        return options;
+    }
+
     void run(String filePath, String userChoice, User user) {
 
         setUser(user);
@@ -93,9 +120,9 @@ class Options {
             e.printStackTrace();
         }
 
-        if(userChoice != null)
-            getOptions().get(userChoice).accept(null);
+        if(user.getPermission() != 1)
+            getOptionsCustomer().get(userChoice).accept(null);
         else
-            System.out.println("Error: UserChoice is null");
+            getOptionsAdmin().get(userChoice).accept(null);
     }
 }
