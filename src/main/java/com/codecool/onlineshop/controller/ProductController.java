@@ -89,20 +89,13 @@ public class ProductController {
         if (products.get(0) == null) {
             Print.printText("No item found");
         } else {
-            new ConvertToArrays().sendProductsToTable(products, headers);
+            new ConvertToArrays().sendProductsToTable(products);
         }
     }
 
     public void showAllProducts() {
         List<Product> productList = productService.getAllProducts();
-        List<String> headers = new ArrayList<>();
-        headers.add("ID");
-        headers.add("NAME");
-        headers.add("PRICE");
-        headers.add("AMOUNT");
-        headers.add("isAVAILABLE");
-        headers.add("CATEGORY");
-        new ConvertToArrays().sendProductsToTable(productList, headers);
+        new ConvertToArrays().sendProductsToTable(productList);
 
     }
 
@@ -111,14 +104,7 @@ public class ProductController {
         String categoryName = ReadInput.UserStringInput();
         List<Product> productList = productService.getProductByCategory(categoryName);
         if (productList.size() > 0) {
-            List<String> headers = new ArrayList<>();
-            headers.add("ID");
-            headers.add("NAME");
-            headers.add("PRICE");
-            headers.add("AMOUNT");
-            headers.add("isAVAILABLE");
-            headers.add("CATEGORY");
-            new ConvertToArrays().sendProductsToTable(productList, headers);
+            new ConvertToArrays().sendProductsToTable(productList);
         }
 
     }
@@ -133,7 +119,7 @@ public class ProductController {
         if (products.size() == 0) {
             Print.printText("No item found");
         } else {
-            new ConvertToArrays().sendProductsToTable(products, headers);
+            new ConvertToArrays().sendProductsToTable(products);
         }
 
     }

@@ -13,8 +13,15 @@ public class ConvertToArrays {
     private UserService userService = new UserService();
     private ProductService productService = new ProductService();
 
-    public void sendProductsToTable(List<Product> incomingData, List<String> header) {
+    public void sendProductsToTable(List<Product> incomingData) {
         List<List<String>> productsList = new ArrayList<>();
+        List<String> headers = new ArrayList<>();
+        headers.add("ID");
+        headers.add("NAME");
+        headers.add("PRICE");
+        headers.add("AMOUNT");
+        headers.add("isAVAILABLE");
+        headers.add("CATEGORY");
 
         int counter = 0;
 
@@ -31,7 +38,7 @@ public class ConvertToArrays {
             counter += 1;
         }
 
-        viewer.displayTable(productsList, header);
+        viewer.displayTable(productsList, headers);
     }
 
     public void sendBasketToTable(List<Basket> incomingData, List<String> header) {
