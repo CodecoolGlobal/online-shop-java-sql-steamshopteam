@@ -106,5 +106,18 @@ public class ProductController {
 
     }
 
+    public void getAvailableProduct(){
+
+        List<Product> products;
+
+        products = new ProductService().getAvailableProduct();
+        if (products.size() == 0) {
+            Print.printText("No item found");
+        } else {
+            new ConvertToArrays().sendProductsToTable(products);
+        }
+
+    }
+
 
 }

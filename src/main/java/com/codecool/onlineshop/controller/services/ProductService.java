@@ -151,4 +151,14 @@ public class ProductService {
         return filteredProduct;
     }
 
+    public List<Product> getAvailableProduct() {
+        List<Product> productList = getProducts();
+        List<Product> filteredProduct = new ArrayList<>();
+
+        for(Product product : productList) {
+            if(product.getIsAvailable() == 1)
+                filteredProduct.add(product);
+        }
+        return filteredProduct;
+    }
 }
