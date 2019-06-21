@@ -20,7 +20,7 @@ public class RootController {
         this.userLogin = new UserLogin();
         this.productService = new ProductService();
         this.uiController = new UiController(userLogin);
-        //uiController.start();
+        uiController.start();
 
         //user = userLogin.getLoggedUser();
         //BasketController basketController = new BasketController(user);
@@ -29,7 +29,6 @@ public class RootController {
         //categoryController.editNameExistCategory();
         //productController.deactiveEmptyProduct();
         //productController.setDiscount();
-        productController.getAvailableProduct();
 
 
     }
