@@ -3,6 +3,9 @@ package com.codecool.onlineshop.controller;
 import com.codecool.onlineshop.controller.services.BasketService;
 import com.codecool.onlineshop.controller.services.ProductService;
 import com.codecool.onlineshop.model.ConvertToArrays;
+import com.codecool.onlineshop.model.Product;
+import com.codecool.onlineshop.model.User;
+import com.codecool.onlineshop.model.UserLogin;
 import com.codecool.onlineshop.model.User;
 
 import java.io.BufferedReader;
@@ -18,22 +21,25 @@ import java.util.function.Consumer;
 class Options {
     private ConvertToArrays converter = new ConvertToArrays();
     private ProductService productService = new ProductService();
-    private ProductController productController = new ProductController();
-    private BasketService basketService = new BasketService();
-    private CategoryController categoryController = new CategoryController();
+    private BasketController basketController;
+    private OrderController orderController;
+    private ProductController productController;
+    private CategoryController categoryController;
 
-    public User getUser() {
-        return user;
-    }
+    private Product product = productService.getProductById(3);
 
-    public void setUser(User user) {
+    public Options(User user) {
         this.user = user;
+        this.basketController = new BasketController(user);
+        this.orderController = new OrderController(user);
+        this.productController = new ProductController();
+        this.categoryController = new CategoryController();
     }
+
 
     private User user;
 
-    List<String> loadOptions(String filePath) throws IOException
-    {
+    List<String> loadOptions(String filePath) throws IOException {
         List<String> options = new ArrayList<>();
 
         FileInputStream fstream = new FileInputStream(filePath);
@@ -41,7 +47,7 @@ class Options {
 
         String strLine;
 
-        while ((strLine = br.readLine()) != null)   {
+        while ((strLine = br.readLine()) != null) {
             options.add(strLine);
         }
 
@@ -50,35 +56,24 @@ class Options {
         return options;
     }
 
-    private Map<String, Consumer<Void>> getOptionsCustomer()
-    {
+    private Map<String, Consumer<Void>> getOptions() {
         Map<String, Consumer<Void>> options = new HashMap<>();
-        //add to basket
-        options.put("1", (a) -> {
-            converter.sendProductsToTable(productService.getAllProducts());
-            basketService.addProductToBasket(getUser(), productService.getProductById(ReadInput.UserIntInput()),
-                    ReadInput.UserIntInput());
-        });
-        //show basket
-        options.put("2", (a) -> converter.sendBasketToTable(basketService.showAllBaskets()));
-        //edit basket
-        options.put("3", (a) -> basketService.editBasket(user,
-                productService.getProductByName(ReadInput.UserStringInput()),
-                ReadInput.UserStringInput(),
-                ReadInput.UserIntInput()));
-        //delete basket
-        options.put("4", (a) -> basketService.deleteProductFromBasket(user,
-                productService.getProductByName(ReadInput.UserStringInput())));
 
-        options.put("5. Place order", (a) -> System.out.println("placing order"));
+        options.put("1", (a) -> basketController.addProductToBasket());
 
-        options.put("6. Show orders history", (a) -> System.out.println("showing orders history"));
+        options.put("2", (a) -> basketController.showUserBasket(user));
 
-        options.put("7", (a) -> {
-            converter.sendProductsToTable(productService.getAllProducts());
-        });
+        options.put("3", (a) -> basketController.editBasket(user));
 
-        options.put("8", (a) -> System.out.println("showing basket"));
+        options.put("4", (a) -> basketController.deleteProductFromBasket());
+
+        options.put("5", (a) -> orderController.makeOrder());
+
+        options.put("6", (a) -> orderController.showOrdersHistory());
+
+        options.put("7", (a) -> productController.showAllProducts());
+
+        options.put("8", (a) -> productController.showProductByCategory());
 
         options.put("9", (a) -> System.out.println("showing basket"));
 
@@ -89,8 +84,9 @@ class Options {
         return options;
     }
 
-    private Map<String, Consumer<Void>> getOptionsAdmin()
-    {
+
+
+    private Map<String, Consumer<Void>> getOptionsAdmin() {
         Map<String, Consumer<Void>> options = new HashMap<>();
 
         options.put("1", (a) -> categoryController.createNewCategory());
@@ -112,9 +108,7 @@ class Options {
         return options;
     }
 
-    void run(String filePath, String userChoice, User user) {
-
-        setUser(user);
+    void run(String filePath, String userChoice) {
 
         try {
             loadOptions(filePath);
@@ -122,8 +116,12 @@ class Options {
             e.printStackTrace();
         }
 
+        if (userChoice != null)
+            getOptions().get(userChoice).accept(null);
+        else
+            System.out.println("Error: UserChoice is null");
         if(user.getPermission() != 1)
-            getOptionsCustomer().get(userChoice).accept(null);
+            getOptions().get(userChoice).accept(null);
         else
             getOptionsAdmin().get(userChoice).accept(null);
     }

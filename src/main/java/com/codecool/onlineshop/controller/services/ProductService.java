@@ -128,27 +128,21 @@ public class ProductService {
 
     }
 
-    public List<Product> getProductbyCategory(String categoryName) {
-        List<Product> productList = getProducts();
-        List<Category> categoryList = new CategoryService().readAllCategory();
-        List<Product> filteredProduct = new ArrayList<>();
-
-        int categoryId = -1;
-
-        for (Category category : categoryList) {
-            if (category.getName().equals(categoryName)) {
-                categoryId = category.getId();
-                break;
+    public List getProductByCategory(String categoryName){
+        List<Product> productList = getAllProducts();
+        List<Product> productsByCategoryName = new ArrayList<>();
+        CategoryService categoryService = new CategoryService();
+        List<Category> categoryList = categoryService.readAllCategory();
+        for(Product product : productList){
+            for(Category category : categoryList){
+                if(category.getName().equals(categoryName)){
+                    if(category.getId() == product.getCategoryId()) {
+                        productsByCategoryName.add(product);
+                    }
+                }
             }
         }
-        for (Product product : productList) {
-            if (product.getCategoryId() == categoryId) {
-                filteredProduct.add(product);
-            }
-        }
-
-
-        return filteredProduct;
+        return productsByCategoryName;
     }
 
     public List<Product> getAvailableProduct() {

@@ -9,15 +9,8 @@ public class Viewer {
     displayTable merges headers with content and display it in console
      */
 
-    public void displayTable(List<List<String>> table){
-        List<String> headers = new ArrayList<>();
+    public void displayTable(List<List<String>> table, List<String> headers){
 
-        headers.add("ID");
-        headers.add("NAME");
-        headers.add("PRICE");
-        headers.add("AMOUNT");
-        headers.add("isAVAILABLE");
-        headers.add("CATEGORY");
         PrintTable newTable = new PrintTable(headers, table,false);
         String tableToPrint = newTable.printTable();
         display(tableToPrint);

@@ -2,11 +2,10 @@ package com.codecool.onlineshop.controller;
 
 import com.codecool.onlineshop.controller.services.BasketService;
 import com.codecool.onlineshop.controller.services.ProductService;
-import com.codecool.onlineshop.model.Product;
-import com.codecool.onlineshop.model.User;
-import com.codecool.onlineshop.model.UserLogin;
+import com.codecool.onlineshop.model.*;
 import com.codecool.onlineshop.view.Print;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BasketController {
@@ -35,7 +34,12 @@ public class BasketController {
     }
 
     public void showUserBasket(User user) {
-        basketService.getUserBasket(user);
+        List<Basket> basketList = basketService.getUserBasket(user);
+        List<String> headers = new ArrayList<>();
+        headers.add("Owner");
+        headers.add("amount");
+        headers.add("Prod id");
+        new ConvertToArrays().sendBasketToTable(basketList, headers);
     }
 
 
@@ -59,5 +63,13 @@ public class BasketController {
             basketService.deleteProductFromBasket(user, productService.getProductByName(productName));
         }
 
+    }
+
+    public void makeOrder(){
+        new OrderController(user).makeOrder();
+    }
+
+    public void payForOrder(){
+        new OrderController(user).payForOrder();
     }
 }
