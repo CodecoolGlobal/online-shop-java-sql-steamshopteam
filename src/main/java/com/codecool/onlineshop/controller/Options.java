@@ -18,7 +18,9 @@ import java.util.function.Consumer;
 class Options {
     private ConvertToArrays converter = new ConvertToArrays();
     private ProductService productService = new ProductService();
+    private ProductController productController = new ProductController();
     private BasketService basketService = new BasketService();
+    private CategoryController categoryController = new CategoryController();
 
     public User getUser() {
         return user;
@@ -91,21 +93,21 @@ class Options {
     {
         Map<String, Consumer<Void>> options = new HashMap<>();
 
-        options.put("1", (a) -> System.out.println("admin"));
+        options.put("1", (a) -> categoryController.createNewCategory());
 
-        options.put("2", (a) -> System.out.println("showing basket"));
+        options.put("2", (a) -> categoryController.editNameExistCategory());
 
-        options.put("3", (a) -> System.out.println("showing basket"));
+        options.put("3", (a) -> productController.deactiveEmptyProduct());
 
-        options.put("4", (a) -> System.out.println("showing basket"));
+        options.put("4", (a) -> productController.createNewProduct());
 
-        options.put("5", (a) -> System.out.println("showing basket"));
+        options.put("5", (a) -> productController.updateProduct());
 
-        options.put("6", (a) -> System.out.println("showing basket"));
+        options.put("6", (a) -> System.out.println("deactive product"));
 
-        options.put("7", (a) -> System.out.println("showing basket"));
+        options.put("7", (a) -> productController.setDiscount());
 
-        options.put("8", (a) -> System.out.println("showing basket"));
+        options.put("8", (a) -> System.out.println("print orders list"));
 
         return options;
     }
