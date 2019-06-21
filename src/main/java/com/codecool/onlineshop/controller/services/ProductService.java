@@ -35,13 +35,18 @@ public class ProductService {
     public Product getProductByName(String productName) {
         List<Product> productList = getAllProducts();
         for (Product product : productList) {
-            if (product.getName() == productName) {
+            if (product.getName().equals(productName)) {
                 return product;
             }
         }
         return null;
     }
 
+    private List<Product> getProducts() {
+        List<Product> productList;
+        productList = getAllProducts();
+        return productList;
+    }
 
 
     public void updateProductName(int productId, String newProductName) {
@@ -75,8 +80,7 @@ public class ProductService {
     }
 
     public void deactivateProductWhenQuantityEquals0() {
-        List<Product> productList;
-        productList = getAllProducts();
+        List<Product> productList = getProducts();
         for (Product product : productList) {
             if (product.getAmount() == 0) {
                 updateProductIsAvailable(product.getId(), 0);
@@ -85,16 +89,13 @@ public class ProductService {
     }
 
     public void updateProduct(String name, String productName, int amount, int is_available, int categoryId, float price) {
-        List<Product> productList;
-        productList = getAllProducts();
+        List<Product> productList = getProducts();
 
         for (Product product : productList) {
             if (product.getName().equals(name)) {
                 int id = product.getId();
-                if (!productName.equals("")){
-                    System.out.println("jestem tu");
-                    System.out.println(product.getId());
-                    updateProductName(id,productName);
+                if (!productName.equals("")) {
+                    updateProductName(id, productName);
                 }
                 if (amount != -1) {
                     updateProductAmount(id, amount);
@@ -105,12 +106,24 @@ public class ProductService {
                 if (categoryId != -1) {
                     updateProductCategory(id, categoryId);
                 }
-                if(price != 0.0){
-                    updateProductPrice(id,price);
+                if (price != 0.0) {
+                    updateProductPrice(id, price);
                 }
 
             }
         }
+
+    }
+
+    public void discountProduct(int index, int discount) {
+        List<Product> productList = getProducts();
+        float dis = (float) discount / 100;
+        for (Product product : productList) {
+            if (product.getId() == index) {
+                updateProductPrice(product.getId(), (product.getPrice() - (product.getPrice() * dis)));
+            }
+        }
+
 
     }
 

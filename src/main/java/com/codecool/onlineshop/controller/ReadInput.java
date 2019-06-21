@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class ReadInput {
 
-    public static String UserStringInput() {
+    private static String readInput() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String readLine = "-1";
         try {
@@ -17,26 +17,16 @@ public class ReadInput {
         return readLine;
     }
 
+    public static String UserStringInput() {
+        return readInput();
+    }
+
     public static int UserIntInput() {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String readLine = "-1";
-        try {
-            readLine = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return Integer.parseInt(readLine);
+        return Integer.parseInt(readInput());
     }
 
     public static float UserFloatInput() {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String readLine = "-1";
-        try {
-            readLine = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return Float.parseFloat(readLine);
+        return Float.parseFloat(readInput());
     }
 }
 
