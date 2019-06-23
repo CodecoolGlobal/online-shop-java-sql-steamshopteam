@@ -62,7 +62,7 @@ class Options {
 
         options.put("4", (a) -> basketController.deleteProductFromBasket());
 
-        options.put("5", (a) -> orderController.makeOrder());
+        options.put("5", (a) -> orderController.uiView());
 
         options.put("6", (a) -> orderController.showOrdersHistory());
 
