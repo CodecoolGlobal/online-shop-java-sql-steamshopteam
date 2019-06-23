@@ -59,9 +59,9 @@ public class OrderDao implements Dao<Order> {
 
 
         try {
-            sqlImplementation.doQuery("UPDATE orders SET order_create = '"+order.getOrderDate()+"'," +
-                    " pay_date = '"+order.getPayDate()+"', id_owner = '"+order.getId_owner()+"', id_status = '"+order.getId_status()+"'," +
-                    " id_product = '"+order.getId_product()+"' WHERE id_owner = '"+order.getId_owner()+"'");
+            sqlImplementation.doQuery("UPDATE orders SET order_create = '" + order.getOrderDate() + "'," +
+                    " pay_date = '" + order.getPayDate() + "', id_owner = '" + order.getId_owner() + "', id_status = '" + order.getId_status() + "'," +
+                    " id_product = '" + order.getId_product() + "' WHERE id_owner = '" + order.getId_owner() + "'");
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
         }

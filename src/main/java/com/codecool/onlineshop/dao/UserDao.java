@@ -22,7 +22,7 @@ public class UserDao implements Dao<User> {
         //todo register new user
         try {
             //newUser = new User(3,"dupa", "yo", 1);
-            sqlImplementation.doQuery("INSERT INTO Users(password, name, id_permission) VALUES ('"+newUser.getPassword()+"','"+newUser.getUserName()+"', '"+newUser.getPermission()+"')");
+            sqlImplementation.doQuery("INSERT INTO Users(password, name, id_permission) VALUES ('" + newUser.getPassword() + "','" + newUser.getUserName() + "', '" + newUser.getPermission() + "')");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -62,9 +62,9 @@ public class UserDao implements Dao<User> {
         //toDo: Implement
 
         try {
-            sqlImplementation.doQuery("UPDATE users SET password = '"+user.getPassword()+"'," +
-                    "name = '"+user.getUserName()+"', id_permission = '"+user.getPermission()+"'," +
-                    "is_logged = '"+user.isLogged()+"' WHERE id = '"+user.getUserId()+"'");
+            sqlImplementation.doQuery("UPDATE users SET password = '" + user.getPassword() + "'," +
+                    "name = '" + user.getUserName() + "', id_permission = '" + user.getPermission() + "'," +
+                    "is_logged = '" + user.isLogged() + "' WHERE id = '" + user.getUserId() + "'");
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -77,18 +77,11 @@ public class UserDao implements Dao<User> {
     @Override
     public void delete(int userId) {
         try {
-            sqlImplementation.doQuery("DELETE FROM users WHERE id = '"+userId+"'");
+            sqlImplementation.doQuery("DELETE FROM users WHERE id = '" + userId + "'");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        //toDo: Implement
-
-        try {
-            throw new UnsupportedOperationException("not implementet yet");
-        } catch (UnsupportedOperationException e) {
-            System.out.println(e.getMessage());
-        }
 
     }
 }

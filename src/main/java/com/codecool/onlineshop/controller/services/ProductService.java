@@ -3,6 +3,7 @@ package com.codecool.onlineshop.controller.services;
 import com.codecool.onlineshop.dao.ProductDao;
 import com.codecool.onlineshop.model.Category;
 import com.codecool.onlineshop.model.Product;
+import com.codecool.onlineshop.view.Print;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,12 +44,6 @@ public class ProductService {
         return null;
     }
 
-    private List<Product> getProducts() {
-        List<Product> productList;
-        productList = getAllProducts();
-        return productList;
-    }
-
 
     public void updateProductName(int productId, String newProductName) {
         Product product = getProductById(productId);
@@ -81,7 +76,7 @@ public class ProductService {
     }
 
     public void deactivateProductWhenQuantityEquals0() {
-        List<Product> productList = getProducts();
+        List<Product> productList = getAllProducts();
         for (Product product : productList) {
             if (product.getAmount() == 0) {
                 updateProductIsAvailable(product.getId(), 0);
@@ -90,7 +85,7 @@ public class ProductService {
     }
 
     public void updateProduct(String name, String productName, int amount, int is_available, int categoryId, float price) {
-        List<Product> productList = getProducts();
+        List<Product> productList = getAllProducts();
 
         for (Product product : productList) {
             if (product.getName().equals(name)) {
@@ -117,7 +112,7 @@ public class ProductService {
     }
 
     public void discountProduct(int index, int discount) {
-        List<Product> productList = getProducts();
+        List<Product> productList = getAllProducts();
         float dis = (float) discount / 100;
         for (Product product : productList) {
             if (product.getId() == index) {
@@ -128,17 +123,19 @@ public class ProductService {
 
     }
 
-    public List getProductByCategory(String categoryName){
+    public List getProductByCategory(String categoryName) {
         List<Product> productList = getAllProducts();
         List<Product> productsByCategoryName = new ArrayList<>();
         CategoryService categoryService = new CategoryService();
         List<Category> categoryList = categoryService.readAllCategory();
-        for(Product product : productList){
-            for(Category category : categoryList){
-                if(category.getName().equals(categoryName)){
-                    if(category.getId() == product.getCategoryId()) {
+        for (Product product : productList) {
+            for (Category category : categoryList) {
+                if (category.getName().equals(categoryName)) {
+                    if (category.getId() == product.getCategoryId()) {
                         productsByCategoryName.add(product);
                     }
+                } else {
+                    Print.printText("No category in database! ");
                 }
             }
         }
@@ -146,23 +143,23 @@ public class ProductService {
     }
 
     public List<Product> getAvailableProduct() {
-        List<Product> productList = getProducts();
+        List<Product> productList = getAllProducts();
         List<Product> filteredProduct = new ArrayList<>();
 
-        for(Product product : productList) {
-            if(product.getIsAvailable() == 1)
+        for (Product product : productList) {
+            if (product.getIsAvailable() == 1)
                 filteredProduct.add(product);
         }
         return filteredProduct;
 
     }
 
-    public void deactivateProductOf(int index){
-        List<Product> productList = getProducts();
+    public void deactivateProductOf(int index) {
+        List<Product> productList = getAllProducts();
 
-        for(Product product : productList)
-            if(product.getId() == index) {
-                updateProductIsAvailable(product.getId(),0);
+        for (Product product : productList)
+            if (product.getId() == index) {
+                updateProductIsAvailable(product.getId(), 0);
             }
 
     }

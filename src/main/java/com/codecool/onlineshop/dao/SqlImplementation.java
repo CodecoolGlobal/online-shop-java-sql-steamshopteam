@@ -42,8 +42,7 @@ public class SqlImplementation implements Sql {
     }
 
 
-
-    public void closeQuery(){
+    public void closeQuery() {
         try {
             this.statement.close();
             this.con.close();

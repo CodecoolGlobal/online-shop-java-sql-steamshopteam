@@ -3,7 +3,6 @@ package com.codecool.onlineshop.model;
 
 import com.codecool.onlineshop.controller.services.CategoryService;
 import com.codecool.onlineshop.controller.services.ProductService;
-import com.codecool.onlineshop.controller.services.UserService;
 import com.codecool.onlineshop.view.Viewer;
 
 import java.util.ArrayList;
@@ -13,13 +12,12 @@ import java.util.List;
 public class ConvertToArrays {
 
     private Viewer viewer = new Viewer();
-    private UserService userService = new UserService();
     private ProductService productService = new ProductService();
     private CategoryService categoryService = new CategoryService();
 
     public void sendProductsToTable(List<Product> incomingData) {
         List<List<String>> productsList = new ArrayList<>();
-        List<Category> categoryList = new ArrayList<>();
+        List<Category> categoryList;
         categoryList = categoryService.readAllCategory();
         List<String> headers;
 
@@ -50,7 +48,7 @@ public class ConvertToArrays {
     public void sendBasketToTable(List<Basket> incomingData) {
         List<List<String>> productsList = new ArrayList<>();
         List<String> headers;
-        headers = Arrays.asList("No.", "Item","Amount", "Price", "Total");
+        headers = Arrays.asList("No.", "Item", "Amount", "Price", "Total");
 
 
         int counter = 0;

@@ -1,11 +1,8 @@
 package com.codecool.onlineshop.controller;
 
 import com.codecool.onlineshop.App;
-import com.codecool.onlineshop.controller.services.ProductService;
-import com.codecool.onlineshop.model.ConvertToArrays;
-import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.model.User;
-import sun.applet.Main;
+
 
 
 import java.io.BufferedReader;
@@ -65,7 +62,7 @@ class Options {
 
         options.put("4", (a) -> basketController.deleteProductFromBasket());
 
-        options.put("5", (a) -> orderController.makeOrder());
+        options.put("5", (a) -> orderController.uiView());
 
         options.put("6", (a) -> orderController.showOrdersHistory());
 
@@ -73,13 +70,7 @@ class Options {
 
         options.put("8", (a) -> productController.showProductByCategory());
 
-        options.put("9", (a) -> System.out.println("showing basket"));
-
-        options.put("10. Rate product", (a) -> System.out.println("showing basket"));
-
-        options.put("11. Order history statistics", (a) -> System.out.println("showing basket"));
-
-        options.put("12", (a) -> App.main(null));
+        options.put("9", (a) -> App.main(null));
 
         return options;
     }
@@ -103,7 +94,7 @@ class Options {
 
         options.put("7", (a) -> productController.setDiscount());
 
-        options.put("8", (a) -> System.out.println("print orders list"));
+        options.put("8", (a) -> orderController.showOrderList());
 
         options.put("9", (a) -> App.main(null));
 

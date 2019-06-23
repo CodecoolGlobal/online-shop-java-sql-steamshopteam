@@ -6,14 +6,15 @@ import com.codecool.onlineshop.controller.services.UserService;
 
 import java.util.List;
 
-public class UserLogin
-{
+public class UserLogin {
 
     private UserService userService = new UserService();
 
     private User loggedUser;
 
-    public User getLoggedUser() { return loggedUser; }
+    public User getLoggedUser() {
+        return loggedUser;
+    }
 
     public void login(UiController uiController) {
         String userLogin;
@@ -26,16 +27,12 @@ public class UserLogin
         boolean isLogged = false;
         int adminPerm = 1;
 
-        if(!isLogged)
-        {
-            for (User user : allUsers)
-            {
-                if (userLogin.equals(user.getUserName()))
-                {
+        if (!isLogged) {
+            for (User user : allUsers) {
+                if (userLogin.equals(user.getUserName())) {
                     System.out.print("Password: ");
                     userPassword = ReadInput.UserStringInput();
-                    if (user.getPassword().equals(userPassword))
-                    {
+                    if (user.getPassword().equals(userPassword)) {
                         loggedUser = user;
                         System.out.println("Login successfull\nPermission: "
                                 + (getLoggedUser().getPermission() == adminPerm ? "Admin\n" : "User\n"));

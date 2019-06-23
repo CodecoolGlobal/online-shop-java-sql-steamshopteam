@@ -6,7 +6,4 @@
 6. Show orders history
 7. Show available products
 8. Show product in category
-9. Show products availability
-10. Rate product
-11. Order history statistics
-12. Logout
+9. Logout

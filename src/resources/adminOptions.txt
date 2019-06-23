@@ -6,5 +6,4 @@
 6. Deactive product
 7. Create discount
 8. Show orders list
-9. Show orders feedbacks
-10. Logout
+9. Logout

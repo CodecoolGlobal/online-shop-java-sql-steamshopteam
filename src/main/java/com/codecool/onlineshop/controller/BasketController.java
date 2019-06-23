@@ -8,7 +8,6 @@ import com.codecool.onlineshop.model.Product;
 import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.view.Print;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BasketController {
@@ -66,6 +65,16 @@ public class BasketController {
         String productName = ReadInput.UserStringInput();
         if (productService.getProductByName(productName).getName().equals(productName)) {
             basketService.deleteProductFromBasket(user, productService.getProductByName(productName));
+        }
+
+    }
+
+    public void deleteProductsFromBasket(User user){
+        List<Basket> basketList = basketService.getUserBasket(user);
+        for(Basket basket : basketList){
+            if(basket.getOwnerId() == user.getUserId()) {
+                basketService.deleteProductsFromBasket(basket);
+            }
         }
 
     }

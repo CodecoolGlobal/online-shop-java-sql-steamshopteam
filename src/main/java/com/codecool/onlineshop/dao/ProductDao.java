@@ -10,6 +10,7 @@ import java.util.List;
 
 public class ProductDao implements Dao<Product> {
     private SqlImplementation sqlImplementation;
+
     public ProductDao() {
         sqlImplementation = new SqlImplementation();
     }
@@ -17,7 +18,7 @@ public class ProductDao implements Dao<Product> {
 
     @Override
     public void create(Product product) {
-        sqlImplementation.doQuery("INSERT INTO products(name, amount, is_avaible, id_category, price) VALUES ('"+product.getName()+"','"+product.getAmount()+"','"+product.getIsAvailable()+"','"+product.getCategoryId()+"','"+product.getPrice()+"')");
+        sqlImplementation.doQuery("INSERT INTO products(name, amount, is_avaible, id_category, price) VALUES ('" + product.getName() + "','" + product.getAmount() + "','" + product.getIsAvailable() + "','" + product.getCategoryId() + "','" + product.getPrice() + "')");
 
     }
 
@@ -34,7 +35,7 @@ public class ProductDao implements Dao<Product> {
                 int isAvailable = resultSet.getInt("is_avaible");
                 int idCategory = resultSet.getInt("id_category");
                 int price = resultSet.getInt("price");
-                Product product = new Product(productId, name, amount, isAvailable,idCategory, price);
+                Product product = new Product(productId, name, amount, isAvailable, idCategory, price);
                 products.add(product);
             }
         } catch (SQLException e) {
@@ -44,14 +45,13 @@ public class ProductDao implements Dao<Product> {
     }
 
 
-
     @Override
     public void update(Product product) {
         try {
-            sqlImplementation.doQuery("UPDATE products SET name = '"+product.getName()+"'," +
-                    " amount = '"+product.getAmount()+"', is_avaible = '"+product.getIsAvailable()+"'," +
-                    " id_category = '"+product.getCategoryId()+"', price = '"+product.getPrice()+"' WHERE " +
-                    "id_product = '" + product.getId()+ "'");
+            sqlImplementation.doQuery("UPDATE products SET name = '" + product.getName() + "'," +
+                    " amount = '" + product.getAmount() + "', is_avaible = '" + product.getIsAvailable() + "'," +
+                    " id_category = '" + product.getCategoryId() + "', price = '" + product.getPrice() + "' WHERE " +
+                    "id_product = '" + product.getId() + "'");
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
         }
