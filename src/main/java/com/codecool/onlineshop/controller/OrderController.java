@@ -78,4 +78,9 @@ public class OrderController {
 
     }
 
+    public void showOrderList(){
+        List<Order> orderList = orderService.readAll();
+        new ConvertToArrays().sendOrdersToTable(orderList);
+    }
+
 }

@@ -94,7 +94,7 @@ class Options {
 
         options.put("7", (a) -> productController.setDiscount());
 
-        options.put("8", (a) -> System.out.println("print orders list"));
+        options.put("8", (a) -> orderController.showOrderList());
 
         options.put("9", (a) -> App.main(null));
 
