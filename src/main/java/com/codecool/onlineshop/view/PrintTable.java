@@ -1,8 +1,8 @@
 package com.codecool.onlineshop.view;
 
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 class PrintTable {
 
@@ -29,7 +29,7 @@ class PrintTable {
         table.add(generateTopMiddleOrBottomLine("top"));
         for (List<String> list : input) {
             table.add(fieldSeparator);
-            for (int index = 0; index < list.size(); index ++) {
+            for (int index = 0; index < list.size(); index++) {
                 table.add(centerField(list.get(index), collumnsWidth[index]));
                 table.add(fieldSeparator);
             }
@@ -47,7 +47,7 @@ class PrintTable {
             collumnsWidth.add(string.length());
         }
         for (List<String> list : content) {
-            for (int index = 0; index < list.size(); index ++) {
+            for (int index = 0; index < list.size(); index++) {
                 if (collumnsWidth.get(index) < list.get(index).length()) {
                     collumnsWidth.set(index, list.get(index).length());
                 }
@@ -63,7 +63,8 @@ class PrintTable {
         String end;
 
         switch (modifier) {
-            case "top": default:
+            case "top":
+            default:
                 start = "\n╭";
                 middle = "┬";
                 end = "╮\n";
@@ -84,7 +85,7 @@ class PrintTable {
             int repetitions = number;
             while (repetitions > 0) {
                 output.add("─");
-                repetitions --;
+                repetitions--;
             }
             output.add(middle);
         }
@@ -106,8 +107,8 @@ class PrintTable {
                 centeredField.add(" ");
             }
             flip = !flip;
-            shift ++;
-            repetitions --;
+            shift++;
+            repetitions--;
         }
         return String.join("", centeredField);
     }
@@ -118,7 +119,7 @@ class PrintTable {
             Integer index = 1;
             for (List<String> list : indexedContent) {
                 list.add(0, index.toString());
-                index ++;
+                index++;
             }
             return indexedContent;
         }
@@ -135,9 +136,9 @@ class PrintTable {
         int listsLength = headers.size();
 
         if (wantIndex) {
-            listsLength --;
+            listsLength--;
         }
-        for(List<String> list : content) {
+        for (List<String> list : content) {
             if (list.size() != listsLength) {
                 return false;
             }

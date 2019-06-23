@@ -1,0 +1,9 @@
+1. Add new category
+2. Edit category
+3. Automatic deactive product
+4. Create new product
+5. Edit product properties
+6. Deactive product
+7. Create discount
+8. Show orders list
+9. Logout

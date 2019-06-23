@@ -1,0 +1,9 @@
+1. Add product to basket
+2. Show basket
+3. Edit basket
+4. Delete from basket
+5. Place order
+6. Show orders history
+7. Show available products
+8. Show product in category
+9. Logout

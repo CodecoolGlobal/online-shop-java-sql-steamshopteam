@@ -1,5 +1,7 @@
 package com.codecool.onlineshop.dao;
 
+import com.codecool.onlineshop.model.Product;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +15,7 @@ public class Category {
         this.name = name;
     }
 
-    public void GetProducts(List<Product> products)
-    {
+    public void GetProducts(List<Product> products) {
 
     }
 
@@ -22,8 +23,7 @@ public class Category {
         return name;
     }
 
-    public String ToString()
-    {
+    public String ToString() {
         String txt = "";
 
         return txt;
