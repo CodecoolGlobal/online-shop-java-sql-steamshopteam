@@ -3,6 +3,7 @@ package com.codecool.onlineshop.controller.services;
 import com.codecool.onlineshop.dao.ProductDao;
 import com.codecool.onlineshop.model.Category;
 import com.codecool.onlineshop.model.Product;
+import com.codecool.onlineshop.view.Print;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,6 +140,8 @@ public class ProductService {
                     if(category.getId() == product.getCategoryId()) {
                         productsByCategoryName.add(product);
                     }
+                } else {
+                    Print.printText("No category in database! ");
                 }
             }
         }

@@ -70,13 +70,7 @@ class Options {
 
         options.put("8", (a) -> productController.showProductByCategory());
 
-        options.put("9", (a) -> System.out.println("showing basket"));
-
-        options.put("10. Rate product", (a) -> System.out.println("showing basket"));
-
-        options.put("11. Order history statistics", (a) -> System.out.println("showing basket"));
-
-        options.put("12", (a) -> App.main(null));
+        options.put("9", (a) -> App.main(null));
 
         return options;
     }
