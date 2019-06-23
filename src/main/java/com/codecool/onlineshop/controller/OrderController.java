@@ -10,7 +10,6 @@ import com.codecool.onlineshop.model.User;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderController {
@@ -37,6 +36,7 @@ public class OrderController {
                     basket.getProduct(), basket.getAmount());
             orderService.create(order.getOrderDate(), order.getPayDate(), order.getId_owner(), order.getId_status(),
                     order.getId_product(), order.getAmount());
+            basketController.deleteProductsFromBasket(user);
         }
 
 

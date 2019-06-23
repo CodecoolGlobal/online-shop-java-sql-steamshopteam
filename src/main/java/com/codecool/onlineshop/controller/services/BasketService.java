@@ -101,4 +101,8 @@ public class BasketService {
         }
 
     }
+
+    public void deleteProductsFromBasket(Basket basket){
+        basketDao.delete(basket.getOwnerId());
+    }
 }

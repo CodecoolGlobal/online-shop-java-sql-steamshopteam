@@ -70,4 +70,14 @@ public class BasketController {
 
     }
 
+    public void deleteProductsFromBasket(User user){
+        List<Basket> basketList = basketService.getUserBasket(user);
+        for(Basket basket : basketList){
+            if(basket.getOwnerId() == user.getUserId()) {
+                basketService.deleteProductsFromBasket(basket);
+            }
+        }
+
+    }
+
 }

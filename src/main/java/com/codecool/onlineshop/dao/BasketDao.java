@@ -53,7 +53,7 @@ public class BasketDao implements Dao<Basket> {
 
     @Override
     public void delete(int id) {
-        sqlImplementation.doQuery("DELETE FROM baskets WHERE productId = '"+id+"'");
+        sqlImplementation.doQuery("DELETE FROM baskets WHERE ownerId = '"+id+"'");
 
     }
 }
