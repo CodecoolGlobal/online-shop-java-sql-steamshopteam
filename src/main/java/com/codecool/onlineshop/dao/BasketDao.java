@@ -18,7 +18,7 @@ public class BasketDao implements Dao<Basket> {
 
     @Override
     public void create(Basket basket) {
-        sqlImplementation.doQuery("INSERT INTO baskets(ownerId, productId, amount) VALUES ('"+basket.getOwnerId()+"','"+basket.getProduct()+"', '"+basket.getAmount()+"')");
+        sqlImplementation.doQuery("INSERT INTO baskets(ownerId, productId, amount) VALUES ('" + basket.getOwnerId() + "','" + basket.getProduct() + "', '" + basket.getAmount() + "')");
     }
 
     @Override
@@ -43,8 +43,8 @@ public class BasketDao implements Dao<Basket> {
     @Override
     public void update(Basket basket) {
         try {
-            sqlImplementation.doQuery("UPDATE baskets SET ownerId = '"+basket.getOwnerId()+"'," +
-                    " productId = '"+basket.getProduct()+"', amount = '"+basket.getAmount()+"' WHERE productId = '"+basket.getProduct()+"'");
+            sqlImplementation.doQuery("UPDATE baskets SET ownerId = '" + basket.getOwnerId() + "'," +
+                    " productId = '" + basket.getProduct() + "', amount = '" + basket.getAmount() + "' WHERE productId = '" + basket.getProduct() + "'");
         } catch (UnsupportedOperationException e) {
             System.out.println(e.getMessage());
         }
@@ -53,7 +53,7 @@ public class BasketDao implements Dao<Basket> {
 
     @Override
     public void delete(int id) {
-        sqlImplementation.doQuery("DELETE FROM baskets WHERE ownerId = '"+id+"'");
+        sqlImplementation.doQuery("DELETE FROM baskets WHERE ownerId = '" + id + "'");
 
     }
 }

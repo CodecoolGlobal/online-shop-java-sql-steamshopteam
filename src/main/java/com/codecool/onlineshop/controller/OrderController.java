@@ -39,23 +39,20 @@ public class OrderController {
 
     }
 
-    public void uiView(){
+    public void uiView() {
         List<Basket> basketList = new BasketService().getUserBasket(user);
-        if(basketList.size() > 0) {
+        if (basketList.size() > 0) {
             Print.printText("Your basket");
             basketController.showUserBasket(user);
             Print.printText("Do you want place order ?(y/n): ");
             String userInput = ReadInput.UserStringInput();
             if (userInput.equals("y") || userInput.equals("Y")) {
-                    this.makeOrder();
-                    this.payForOrder();
+                this.makeOrder();
+                this.payForOrder();
             }
         } else {
             Print.printText("Your basket is empty!");
         }
-
-
-
 
 
     }
@@ -72,13 +69,13 @@ public class OrderController {
 
     }
 
-    public void showOrdersHistory(){
+    public void showOrdersHistory() {
         List<Order> orderList = orderService.readAllByUser(user.getUserId());
         new ConvertToArrays().sendOrdersToTable(orderList);
 
     }
 
-    public void showOrderList(){
+    public void showOrderList() {
         List<Order> orderList = orderService.readAll();
         new ConvertToArrays().sendOrdersToTable(orderList);
     }

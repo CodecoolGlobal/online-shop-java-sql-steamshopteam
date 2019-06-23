@@ -99,7 +99,7 @@ public class ProductController {
 
     }
 
-    public void showProductByCategory(){
+    public void showProductByCategory() {
         Print.printText("Enter category name what do you want to show: ");
         String categoryName = ReadInput.UserStringInput();
         List<Product> productList = productService.getProductByCategory(categoryName);
@@ -110,7 +110,7 @@ public class ProductController {
     }
 
 
-    public void getAvailableProduct(){
+    public void getAvailableProduct() {
 
         List<Product> products;
         List<String> headers = new ArrayList<>();
@@ -124,7 +124,7 @@ public class ProductController {
 
     }
 
-    public void deactivateProductOf(){
+    public void deactivateProductOf() {
         Print.printText("Id product to deactivate");
         new ProductService().deactivateProductOf(ReadInput.UserIntInput());
 

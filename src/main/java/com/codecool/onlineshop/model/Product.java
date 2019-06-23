@@ -16,6 +16,7 @@ public class Product {
         this.isAvailable = isAvailable;
         this.categoryId = categoryId;
     }
+
     public Product(String name, int amount, int isAvailable, int categoryId, float price) {
         this.name = name;
         this.price = price;
@@ -68,8 +69,7 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public String ToString()
-    {
+    public String ToString() {
         String txt = "";
 
         return txt;

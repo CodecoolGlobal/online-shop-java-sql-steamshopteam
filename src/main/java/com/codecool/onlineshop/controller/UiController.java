@@ -1,7 +1,6 @@
 package com.codecool.onlineshop.controller;
 
 import com.codecool.onlineshop.controller.services.UserService;
-import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.model.UserLogin;
 import com.codecool.onlineshop.view.Print;
 
@@ -32,7 +31,7 @@ public class UiController {
 
     private void showMenu() {
         int permission = userLogin.getLoggedUser().getPermission();
-        while(isLogged) {
+        while (isLogged) {
             String filePath;
             filePath = (permission == 1) ? "src/resources/adminOptions.txt" : "src/resources/customerOptions.txt";
             menuIterator(filePath);
@@ -61,12 +60,12 @@ public class UiController {
         }
     }
 
-    private void registerNewUser(){
+    private void registerNewUser() {
         Print.printText("Enter your name: ");
         String userName = ReadInput.UserStringInput();
         Print.printText("Enter your password: ");
         String password = ReadInput.UserStringInput();
-        if(this.isAlphaNumeric(userName) && isAlphaNumeric(password)) {
+        if (this.isAlphaNumeric(userName) && isAlphaNumeric(password)) {
             new UserService().create(userName, password, 2);
             this.start();
         } else {
@@ -74,15 +73,14 @@ public class UiController {
         }
 
     }
+
     private boolean isAlphaNumeric(String s) {
         return s != null && s.matches("^[a-zA-Z0-9]*$");
     }
 
-    private void menuIterator(String filePath)
-    {
+    private void menuIterator(String filePath) {
         try {
-            for(String option : option.loadOptions(filePath))
-            {
+            for (String option : option.loadOptions(filePath)) {
                 System.out.println(option);
             }
         } catch (IOException e) {

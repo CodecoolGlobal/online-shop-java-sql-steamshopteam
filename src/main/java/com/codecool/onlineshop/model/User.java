@@ -22,7 +22,7 @@ public class User {
         this.permission = permission;
     }
 
-    public User(){
+    public User() {
 
     }
 

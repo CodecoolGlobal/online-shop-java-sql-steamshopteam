@@ -9,8 +9,6 @@ public class Order {
     private int id_product;
     private int amount;
 
-    public Order() {
-    }
 
     public Order(int id_order, String orderDate, String payDate, int id_owner, int id_status, int id_product, int amount) {
         this.id_order = id_order;

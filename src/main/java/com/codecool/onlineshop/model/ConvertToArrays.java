@@ -48,7 +48,7 @@ public class ConvertToArrays {
     public void sendBasketToTable(List<Basket> incomingData) {
         List<List<String>> productsList = new ArrayList<>();
         List<String> headers;
-        headers = Arrays.asList("No.", "Item","Amount", "Price", "Total");
+        headers = Arrays.asList("No.", "Item", "Amount", "Price", "Total");
 
 
         int counter = 0;
