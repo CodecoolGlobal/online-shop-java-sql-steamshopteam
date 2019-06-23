@@ -10,33 +10,18 @@ public class OrderService {
     private OrderDao orderDao;
 
     public OrderService() {
-         orderDao = new OrderDao();
+        orderDao = new OrderDao();
     }
 
     public List readAll() {
         return orderDao.read();
     }
 
-    public Order readOf(int index){
-
-        List<Order> orderList = new ArrayList<>();
-        Order ord = new Order();
-        orderList = orderDao.read();
-
-        for(Order order : orderList) {
-            if(order.getId_order() == index) {
-                ord = order;
-
-            }
-        }
-        return ord;
-    }
 
     public List readAllByUser(int UserId) {
-        List<Order> orderList = new ArrayList<>();
+        List<Order> orderList = orderDao.read();
         List<Order> filteredOrderList = new ArrayList<>();
 
-        orderList = orderDao.read();
 
         for (Order order : orderList) {
             if (order.getId_owner() == UserId) {
@@ -46,11 +31,11 @@ public class OrderService {
         return filteredOrderList;
     }
 
-    public void create(Order order){
+    public void create(Order order) {
         orderDao.create(order);
     }
 
-    public void payForOrder(Order order, String payDate){
+    public void payForOrder(Order order, String payDate) {
         order.setPayDate(payDate);
         orderDao.update(order);
 
